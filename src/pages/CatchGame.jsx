@@ -14,8 +14,8 @@ function randomPos() {
     x: 10 + Math.random() * 75,
     y: 10 + Math.random() * 70,
     color: COLORS[Math.floor(Math.random() * COLORS.length)],
-    dx: (Math.random() - 0.5) * 2,
-    dy: (Math.random() - 0.5) * 2,
+    dx: (Math.random() - 0.5) * 0.4,
+    dy: (Math.random() - 0.5) * 0.4,
   };
 }
 

@@ -2,18 +2,19 @@ const dotPuzzles = [
   {
     name: "Domek",
     emoji: "🏠",
+    closePath: true,
     dots: [
       { x: 20, y: 80 },
       { x: 20, y: 40 },
       { x: 50, y: 15 },
       { x: 80, y: 40 },
       { x: 80, y: 80 },
-      { x: 20, y: 80 },
     ],
   },
   {
     name: "Gwiazda",
     emoji: "⭐",
+    closePath: true,
     dots: [
       { x: 50, y: 10 },
       { x: 62, y: 38 },
@@ -25,12 +26,12 @@ const dotPuzzles = [
       { x: 32, y: 58 },
       { x: 10, y: 38 },
       { x: 38, y: 38 },
-      { x: 50, y: 10 },
     ],
   },
   {
     name: "Łódka",
     emoji: "⛵",
+    closePath: false,
     dots: [
       { x: 50, y: 15 },
       { x: 50, y: 55 },
@@ -45,6 +46,7 @@ const dotPuzzles = [
   {
     name: "Choinka",
     emoji: "🎄",
+    closePath: true,
     dots: [
       { x: 50, y: 10 },
       { x: 25, y: 40 },
@@ -57,12 +59,12 @@ const dotPuzzles = [
       { x: 85, y: 65 },
       { x: 65, y: 40 },
       { x: 75, y: 40 },
-      { x: 50, y: 10 },
     ],
   },
   {
     name: "Serce",
     emoji: "❤️",
+    closePath: true,
     dots: [
       { x: 50, y: 90 },
       { x: 15, y: 55 },
@@ -74,7 +76,6 @@ const dotPuzzles = [
       { x: 80, y: 20 },
       { x: 90, y: 35 },
       { x: 85, y: 55 },
-      { x: 50, y: 90 },
     ],
   },
 ];

@@ -52,16 +52,23 @@ export default function RhythmGame() {
     playTone(150, 0.15, "triangle");
     setTimeout(() => setDrumActive(false), 100);
 
-    const elapsed = Date.now() - startTime.current;
+    // Start timer on first hit
+    if (playerBeats.length === 0) {
+      startTime.current = Date.now();
+    }
+
+    const elapsed = playerBeats.length === 0 ? 0 : Date.now() - startTime.current;
     const newBeats = [...playerBeats, elapsed];
     setPlayerBeats(newBeats);
 
     if (newBeats.length >= pattern.beats.length) {
       clearTimeout(timerRef.current);
-      // Check accuracy
+      // Check accuracy by comparing intervals between beats
       let correct = true;
-      for (let i = 0; i < pattern.beats.length; i++) {
-        if (Math.abs(newBeats[i] - pattern.beats[i]) > TOLERANCE) {
+      for (let i = 1; i < pattern.beats.length; i++) {
+        const expectedInterval = pattern.beats[i] - pattern.beats[0];
+        const playerInterval = newBeats[i] - newBeats[0];
+        if (Math.abs(playerInterval - expectedInterval) > TOLERANCE) {
           correct = false;
           break;
         }

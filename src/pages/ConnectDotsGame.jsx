@@ -32,6 +32,9 @@ export default function ConnectDotsGame() {
       setCurrentDot(next);
 
       if (next >= puzzle.dots.length) {
+        if (puzzle.closePath) {
+          setLines((l) => [...l, { from: puzzle.dots[index], to: puzzle.dots[0] }]);
+        }
         setCompleted(true);
         playSuccess();
       }

@@ -52,10 +52,19 @@ export default function MemoryGame() {
     setMode(setType);
     setDifficulty(diff);
     const set = CARD_SETS[setType].slice(0, diff.pairs);
-    const pairs = set.flatMap((c, i) => [
-      { uid: `${i}-a`, id: c.id, display: c.front, type: "front" },
-      { uid: `${i}-b`, id: c.id, display: c.back, type: "back" },
-    ]);
+    let pairs;
+    if (diff.id === "easy") {
+      // Easy mode: both cards show the same emoji
+      pairs = set.flatMap((c, i) => [
+        { uid: `${i}-a`, id: c.id, display: c.front, type: "front" },
+        { uid: `${i}-b`, id: c.id, display: c.front, type: "front" },
+      ]);
+    } else {
+      pairs = set.flatMap((c, i) => [
+        { uid: `${i}-a`, id: c.id, display: c.front, type: "front" },
+        { uid: `${i}-b`, id: c.id, display: c.back, type: "back" },
+      ]);
+    }
     setCards(shuffle(pairs));
     setFlipped([]);
     setMatched([]);

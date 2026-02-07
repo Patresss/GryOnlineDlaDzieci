@@ -102,7 +102,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(20px, 5vw, 32px);
+  font-size: clamp(32px, 8vw, 52px);
   font-weight: 700;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -118,7 +118,7 @@
   transform: rotateY(180deg);
   word-break: break-all;
   padding: 4px;
-  font-size: clamp(14px, 3.5vw, 24px);
+  font-size: clamp(28px, 7vw, 44px);
 }
 
 @keyframes fadeIn {

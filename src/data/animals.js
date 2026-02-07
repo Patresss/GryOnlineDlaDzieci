@@ -22,6 +22,7 @@ const animals = [
 ];
 
 export const habitats = [
+  { id: "dom", name: "Dom", emoji: "🏠" },
   { id: "farma", name: "Farma", emoji: "🏡" },
   { id: "dzungla", name: "Dżungla", emoji: "🌴" },
   { id: "las", name: "Las", emoji: "🌲" },
