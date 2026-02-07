@@ -1,0 +1,110 @@
+.game-page--fd {
+  background: linear-gradient(135deg, #ffeaa7, #dfe6e9);
+}
+
+.fd-title {
+  font-size: clamp(22px, 5vw, 32px);
+  color: var(--color-text);
+  margin-top: 72px;
+}
+
+.fd-counter {
+  font-size: 16px;
+  color: var(--color-text);
+  opacity: 0.7;
+  margin: 4px 0 16px;
+}
+
+.fd-pair {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 700px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fd-panel {
+  flex: 1;
+  min-width: 260px;
+}
+
+.fd-label {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 8px;
+}
+
+.fd-scene {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.fd-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.fd-item--clickable {
+  cursor: pointer;
+}
+
+.fd-item--clickable:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.fd-item--found {
+  filter: drop-shadow(0 0 8px var(--color-success));
+  animation: foundPulse 0.6s ease;
+}
+
+@keyframes foundPulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.3); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.fd-next-btn {
+  margin-top: 20px;
+  padding: 14px 36px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  color: white;
+  background: linear-gradient(135deg, var(--color-success), #2ecc71);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(46, 204, 113, 0.4);
+  transition: transform 0.2s;
+}
+
+.fd-next-btn:hover {
+  transform: scale(1.05);
+}
+
+.fd-next-btn:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+  .fd-pair {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fd-panel {
+    width: 100%;
+    max-width: 320px;
+  }
+}

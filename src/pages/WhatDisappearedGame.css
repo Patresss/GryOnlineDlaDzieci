@@ -1,0 +1,80 @@
+.game-page--disappeared {
+  background: linear-gradient(135deg, #d5f5e3, #fdebd0);
+}
+
+.disappeared-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 24px 16px;
+  animation: fadeIn 0.5s ease;
+}
+
+.disappeared-item {
+  width: 80px;
+  height: 80px;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.disappeared-item--missing {
+  border: 3px dashed var(--color-primary);
+  background: rgba(255, 107, 107, 0.1);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.disappeared-curtain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-size: 80px;
+  animation: fadeIn 0.4s ease;
+}
+
+.disappeared-curtain p {
+  font-size: 24px;
+  color: var(--color-text);
+}
+
+.disappeared-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 360px;
+  width: 100%;
+  padding: 0 16px 24px;
+}
+
+.disappeared-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  background: white;
+  border: 4px solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, border-color 0.3s;
+  font-family: inherit;
+}
+
+.disappeared-option span { font-size: 40px; }
+.disappeared-option small { font-size: 14px; color: var(--color-text); }
+.disappeared-option:hover { transform: scale(1.04); }
+.disappeared-option--correct { border-color: var(--color-success); animation: correctPulse 0.6s ease; }
+.disappeared-option--wrong { border-color: var(--color-error); animation: shake 0.5s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes correctPulse { 0% { transform: scale(1); } 30% { transform: scale(1.05); } 100% { transform: scale(1); } }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(10px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(6px); } }

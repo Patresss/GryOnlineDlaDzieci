@@ -1,0 +1,134 @@
+.game-page--piano {
+  background: linear-gradient(135deg, #2d3436, #636e72);
+}
+
+.piano-title {
+  font-size: clamp(28px, 6vw, 40px);
+  color: white;
+  margin-top: 72px;
+}
+
+.piano-mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.piano-mode-btn {
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.piano-mode-btn--active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  color: white;
+}
+
+.piano-melody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 16px;
+}
+
+.piano-melody__select {
+  padding: 8px 16px;
+  font-size: 18px;
+  font-family: inherit;
+  border-radius: 8px;
+  border: none;
+  background: white;
+}
+
+.piano-play-btn {
+  padding: 10px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  color: white;
+  background: linear-gradient(135deg, var(--color-success), #2ecc71);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.piano-play-btn:hover:not(:disabled) { transform: scale(1.05); }
+.piano-play-btn:disabled { opacity: 0.5; cursor: default; }
+
+.piano-step {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+
+.piano-success {
+  color: var(--color-success);
+  font-size: 24px;
+  font-weight: 700;
+  animation: pulse 1s ease infinite;
+}
+
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.piano-keys {
+  display: flex;
+  gap: 6px;
+  padding: 32px 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.piano-key {
+  width: clamp(40px, 10vw, 64px);
+  height: clamp(120px, 25vw, 180px);
+  border: none;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(180deg, white 0%, #f0f0f0 100%);
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+.piano-key:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.piano-key:active,
+.piano-key--active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(180deg, var(--key-color) 0%, var(--key-color) 100%);
+}
+
+.piano-key--active {
+  background: linear-gradient(180deg, var(--key-color) 0%, var(--key-color) 100%) !important;
+}
+
+.piano-key__label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #999;
+  font-family: inherit;
+}
+
+.piano-key--active .piano-key__label {
+  color: white;
+}

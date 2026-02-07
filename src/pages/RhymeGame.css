@@ -1,0 +1,50 @@
+.game-page--rhyme {
+  background: linear-gradient(135deg, #e4d8fc, #fce4ec);
+}
+
+.rhyme-word {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+  animation: fadeIn 0.4s ease;
+}
+
+.rhyme-word__emoji { font-size: 64px; }
+.rhyme-word__text { font-size: 36px; font-weight: 700; color: var(--color-text); }
+
+.rhyme-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 440px;
+  width: 100%;
+  padding: 0 16px 24px;
+}
+
+.rhyme-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 12px;
+  background: white;
+  border: 4px solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, border-color 0.3s;
+  font-family: inherit;
+}
+
+.rhyme-option:hover { transform: scale(1.04); }
+.rhyme-option:active { transform: scale(0.97); }
+.rhyme-option--correct { border-color: var(--color-success); animation: correctPulse 0.6s ease; }
+.rhyme-option--wrong { border-color: var(--color-error); animation: shake 0.5s ease; }
+.rhyme-option__emoji { font-size: 40px; }
+.rhyme-option__word { font-size: 18px; font-weight: 600; color: var(--color-text); }
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes correctPulse { 0% { transform: scale(1); } 30% { transform: scale(1.05); } 100% { transform: scale(1); } }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(10px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(6px); } }

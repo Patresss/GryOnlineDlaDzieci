@@ -1,0 +1,44 @@
+.game-page--addition {
+  background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+}
+
+.addition-display {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 4px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.addition-display--correct { border-color: var(--color-success); }
+.addition-display--wrong { border-color: var(--color-error); animation: shake 0.5s ease; }
+
+.addition-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.addition-group--hidden { opacity: 0; transform: translateX(20px); }
+.addition-group--visible { opacity: 1; transform: translateX(0); }
+
+.addition-item {
+  font-size: clamp(32px, 7vw, 44px);
+}
+
+.addition-plus, .addition-equals {
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(10px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(6px); } }

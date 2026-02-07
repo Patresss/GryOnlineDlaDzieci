@@ -1,0 +1,202 @@
+/* Shared styles for LetterGame and NumberGame */
+
+.game-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 24px 48px;
+  position: relative;
+}
+
+.game-page--letters {
+  background: linear-gradient(135deg, #FFF8E7 0%, #FFE4E4 100%);
+}
+
+.game-page--numbers {
+  background: linear-gradient(135deg, #E4F0FF 0%, #FFF8E7 100%);
+}
+
+/* Progress area */
+.game-page__progress {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 64px;
+}
+
+/* Main content area with cards */
+.game-page__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 48px);
+  width: 100%;
+  max-width: 700px;
+  padding: 24px 0;
+  flex-wrap: wrap;
+}
+
+/* Game cards */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  min-width: 180px;
+  min-height: 200px;
+  animation: cardFadeIn 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 4px solid transparent;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.game-card--image {
+  flex: 1;
+  max-width: 280px;
+}
+
+.game-card--answer {
+  min-width: 160px;
+  min-height: 180px;
+}
+
+/* Feedback states */
+.game-card--correct {
+  border-color: var(--color-success);
+  box-shadow: 0 8px 24px rgba(81, 207, 102, 0.3);
+  animation: correctPulse 0.6s ease;
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.05); }
+  60% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+.game-card--wrong {
+  border-color: var(--color-error);
+  box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-12px); }
+  40% { transform: translateX(12px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+}
+
+/* Emoji in image card */
+.game-card__emoji {
+  font-size: clamp(64px, 15vw, 100px);
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Word below emoji */
+.game-card__word {
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 600;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+/* Letter/Number in answer card */
+.game-card__letter {
+  font-size: clamp(64px, 18vw, 120px);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+/* Hint text */
+.game-page__hint {
+  font-size: clamp(18px, 4vw, 24px);
+  color: var(--color-text);
+  opacity: 0.6;
+  text-align: center;
+  margin: 0;
+}
+
+.game-page__hint strong {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* Emoji grid for number game */
+.emoji-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 220px;
+}
+
+.emoji-grid__item {
+  font-size: clamp(32px, 8vw, 48px);
+  line-height: 1;
+  animation: emojiPop 0.3s ease both;
+}
+
+.emoji-grid__item:nth-child(1) { animation-delay: 0s; }
+.emoji-grid__item:nth-child(2) { animation-delay: 0.05s; }
+.emoji-grid__item:nth-child(3) { animation-delay: 0.1s; }
+.emoji-grid__item:nth-child(4) { animation-delay: 0.15s; }
+.emoji-grid__item:nth-child(5) { animation-delay: 0.2s; }
+.emoji-grid__item:nth-child(6) { animation-delay: 0.25s; }
+.emoji-grid__item:nth-child(7) { animation-delay: 0.3s; }
+.emoji-grid__item:nth-child(8) { animation-delay: 0.35s; }
+.emoji-grid__item:nth-child(9) { animation-delay: 0.4s; }
+
+@keyframes emojiPop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .game-page__content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .game-card {
+    min-width: 140px;
+    min-height: 140px;
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .game-card--answer {
+    min-height: 120px;
+  }
+}

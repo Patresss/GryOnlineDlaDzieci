@@ -1,0 +1,26 @@
+const letters = [
+  { letter: "A", word: "Auto", emoji: "🚗" },
+  { letter: "B", word: "Balon", emoji: "🎈" },
+  { letter: "C", word: "Cytryna", emoji: "🍋" },
+  { letter: "D", word: "Dom", emoji: "🏠" },
+  { letter: "E", word: "Ekran", emoji: "🖥️" },
+  { letter: "F", word: "Flaga", emoji: "🚩" },
+  { letter: "G", word: "Gruszka", emoji: "🍐" },
+  { letter: "H", word: "Helikopter", emoji: "🚁" },
+  { letter: "I", word: "Igloo", emoji: "🏔️" },
+  { letter: "J", word: "Jabłko", emoji: "🍎" },
+  { letter: "K", word: "Kot", emoji: "🐱" },
+  { letter: "L", word: "Lew", emoji: "🦁" },
+  { letter: "M", word: "Motyl", emoji: "🦋" },
+  { letter: "N", word: "Nożyczki", emoji: "✂️" },
+  { letter: "O", word: "Okno", emoji: "🪟" },
+  { letter: "P", word: "Pies", emoji: "🐶" },
+  { letter: "R", word: "Rakieta", emoji: "🚀" },
+  { letter: "S", word: "Słońce", emoji: "☀️" },
+  { letter: "T", word: "Tęcza", emoji: "🌈" },
+  { letter: "U", word: "Usta", emoji: "👄" },
+  { letter: "W", word: "Wąż", emoji: "🐍" },
+  { letter: "Z", word: "Zamek", emoji: "🏰" },
+];
+
+export default letters;

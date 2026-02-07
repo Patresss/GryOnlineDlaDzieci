@@ -1,0 +1,122 @@
+.game-page--catch {
+  background: linear-gradient(135deg, #dfe6e9 0%, #c8f7c5 100%);
+}
+
+.catch-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: fadeIn 0.4s ease;
+}
+
+.catch-start__emoji {
+  font-size: 80px;
+  animation: floatBounce 2s ease infinite;
+}
+
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+.catch-start h2 {
+  font-size: clamp(28px, 6vw, 40px);
+  color: var(--color-text);
+}
+
+.catch-start p {
+  font-size: 20px;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.catch-start__btn {
+  padding: 16px 48px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: inherit;
+  color: white;
+  background: linear-gradient(135deg, var(--color-success), #2ecc71);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.catch-start__btn:hover { transform: scale(1.05); }
+.catch-start__btn:active { transform: scale(0.97); }
+
+.catch-hud {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  margin: 72px auto 0;
+  padding: 0 16px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.catch-arena {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 600px;
+  margin: 16px auto;
+  min-height: 300px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.catch-butterfly {
+  position: absolute;
+  font-size: clamp(36px, 8vw, 52px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  transition: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.catch-butterfly:active {
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+.catch-pop {
+  position: absolute;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-success);
+  pointer-events: none;
+  animation: popUp 0.6s ease forwards;
+}
+
+@keyframes popUp {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -120%) scale(1.2); opacity: 0; }
+}
+
+.catch-final-score {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  z-index: 1001;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

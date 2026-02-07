@@ -1,0 +1,70 @@
+.difficulty-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.difficulty-picker__title {
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.difficulty-picker__options {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.difficulty-picker__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 32px;
+  border: none;
+  border-radius: var(--border-radius);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 140px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.difficulty-picker__btn--easy {
+  background: linear-gradient(135deg, #51CF66, #40c057);
+}
+.difficulty-picker__btn--medium {
+  background: linear-gradient(135deg, #FFE66D, #fcc419);
+}
+.difficulty-picker__btn--hard {
+  background: linear-gradient(135deg, #FF6B6B, #e03131);
+}
+
+.difficulty-picker__btn:hover {
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+.difficulty-picker__btn:active {
+  transform: scale(0.97);
+}
+
+.difficulty-picker__emoji {
+  font-size: 48px;
+}
+.difficulty-picker__label {
+  font-size: 22px;
+  font-weight: 700;
+}
+.difficulty-picker__desc {
+  font-size: 14px;
+  opacity: 0.8;
+}

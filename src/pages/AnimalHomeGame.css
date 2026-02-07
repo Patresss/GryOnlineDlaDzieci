@@ -1,0 +1,50 @@
+.game-page--animalhome {
+  background: linear-gradient(135deg, #c8f7c5, #fdebd0);
+}
+
+.ah-animal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+  animation: fadeIn 0.4s ease;
+}
+
+.ah-animal__emoji { font-size: 72px; }
+.ah-animal__name { font-size: 28px; font-weight: 700; color: var(--color-text); }
+
+.ah-habitats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 400px;
+  width: 100%;
+  padding: 0 16px 24px;
+}
+
+.ah-habitat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 12px;
+  background: white;
+  border: 4px solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, border-color 0.3s;
+  font-family: inherit;
+}
+
+.ah-habitat:hover { transform: scale(1.04); }
+.ah-habitat:active { transform: scale(0.97); }
+.ah-habitat--correct { border-color: var(--color-success); animation: correctPulse 0.6s ease; }
+.ah-habitat--wrong { border-color: var(--color-error); animation: shake 0.5s ease; }
+.ah-habitat__emoji { font-size: 48px; }
+.ah-habitat__name { font-size: 18px; font-weight: 600; color: var(--color-text); }
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes correctPulse { 0% { transform: scale(1); } 30% { transform: scale(1.05); } 100% { transform: scale(1); } }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(10px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(6px); } }

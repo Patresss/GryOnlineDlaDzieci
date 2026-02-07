@@ -1,0 +1,101 @@
+.game-page--maze {
+  background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+}
+
+.maze-title {
+  font-size: clamp(24px, 5vw, 32px);
+  color: var(--color-text);
+  margin-top: 72px;
+}
+
+.maze-hint {
+  font-size: 18px;
+  color: var(--color-text);
+  opacity: 0.7;
+  margin: 4px 0 16px;
+}
+
+.maze-grid {
+  display: grid;
+  gap: 3px;
+  width: min(350px, 85vw);
+  margin: 0 auto;
+}
+
+.maze-cell {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(16px, 4vw, 24px);
+  transition: background 0.2s;
+}
+
+.maze-cell--wall {
+  background: #636e72;
+}
+
+.maze-cell--path {
+  background: rgba(116, 185, 255, 0.3);
+}
+
+.maze-cell--player {
+  background: rgba(255, 230, 109, 0.5);
+  animation: playerPulse 0.3s ease;
+}
+
+@keyframes playerPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.maze-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 16px 0;
+}
+
+.maze-controls__row {
+  display: flex;
+  gap: 4px;
+}
+
+.maze-btn {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maze-btn:hover { transform: scale(1.05); }
+.maze-btn:active { transform: scale(0.93); }
+
+.maze-next-btn {
+  margin-top: 16px;
+  padding: 14px 36px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  color: white;
+  background: linear-gradient(135deg, var(--color-success), #2ecc71);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(46, 204, 113, 0.4);
+  transition: transform 0.2s;
+}
+
+.maze-next-btn:hover { transform: scale(1.05); }

@@ -1,0 +1,79 @@
+.game-page--simon {
+  background: linear-gradient(135deg, #2d3436, #636e72);
+}
+
+.simon-title {
+  font-size: clamp(28px, 6vw, 40px);
+  color: white;
+  margin-top: 72px;
+}
+
+.simon-level {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 8px 0 24px;
+}
+
+.simon-board {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: min(300px, 80vw);
+  aspect-ratio: 1;
+}
+
+.simon-pad {
+  border: none;
+  border-radius: 16px;
+  background: var(--pad-color);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.simon-pad:hover:not(:disabled) { opacity: 0.7; }
+.simon-pad:active:not(:disabled) { transform: scale(0.95); }
+.simon-pad--active { opacity: 1 !important; transform: scale(1.05); box-shadow: 0 0 30px var(--pad-color); }
+.simon-pad:disabled { cursor: default; }
+
+.simon-start-btn {
+  padding: 16px 48px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: inherit;
+  color: white;
+  background: linear-gradient(135deg, var(--color-success), #2ecc71);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+  transition: transform 0.2s;
+  margin-top: 24px;
+}
+
+.simon-start-btn:hover { transform: scale(1.05); }
+.simon-start-btn:active { transform: scale(0.97); }
+
+.simon-status {
+  font-size: 24px;
+  color: white;
+  margin-top: 24px;
+  animation: pulse 1s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.simon-failed {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.simon-failed p {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
