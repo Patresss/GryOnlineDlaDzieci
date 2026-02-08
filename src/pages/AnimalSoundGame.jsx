@@ -64,7 +64,7 @@ export default function AnimalSoundGame() {
 
   const restart = () => { setRound(genRound()); setScore(0); setFeedback(null); setIsWon(false); proc.current = false; };
 
-  if (isWon) return <div className="game-page game-page--animal"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--animal"><WinScreen onPlayAgain={restart} sticker="🐾" /></div>;
 
   return (
     <div className="game-page game-page--animal">

@@ -105,7 +105,7 @@ export default function SimonGame() {
     return () => clearTimeout(timerRef.current);
   }, []);
 
-  if (isWon) return <div className="game-page game-page--simon"><WinScreen onPlayAgain={startGame} /></div>;
+  if (isWon) return <div className="game-page game-page--simon"><WinScreen onPlayAgain={startGame} sticker="🎵" /></div>;
 
   return (
     <div className="game-page game-page--simon">

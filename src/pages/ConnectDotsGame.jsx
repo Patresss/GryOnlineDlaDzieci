@@ -57,7 +57,7 @@ export default function ConnectDotsGame() {
 
   const restart = () => { setPuzzleIndex(0); setCurrentDot(0); setLines([]); setCompleted(false); setAllDone(false); };
 
-  if (allDone) return <div className="game-page game-page--dots"><WinScreen onPlayAgain={restart} /></div>;
+  if (allDone) return <div className="game-page game-page--dots"><WinScreen onPlayAgain={restart} sticker="✏️" /></div>;
 
   return (
     <div className="game-page game-page--dots">

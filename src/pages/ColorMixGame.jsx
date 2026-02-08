@@ -59,7 +59,7 @@ export default function ColorMixGame() {
 
   const restart = () => window.location.reload();
 
-  if (isWon) return <div className="game-page game-page--colormix"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--colormix"><WinScreen onPlayAgain={restart} sticker="🧪" /></div>;
 
   return (
     <div className="game-page game-page--colormix">

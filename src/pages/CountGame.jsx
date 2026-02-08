@@ -84,7 +84,7 @@ export default function CountGame() {
   }, [resetKey]);
 
   if (isWon) {
-    return <div className="game-page game-page--count"><WinScreen onPlayAgain={restart} /></div>;
+    return <div className="game-page game-page--count"><WinScreen onPlayAgain={restart} sticker="🔢" /></div>;
   }
 
   return (

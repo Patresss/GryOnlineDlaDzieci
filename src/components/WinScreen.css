@@ -62,6 +62,34 @@
   font-weight: 700;
 }
 
+/* Sticker reward */
+.win-screen__sticker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0;
+  animation: stickerPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s both;
+}
+
+.win-screen__sticker-emoji {
+  font-size: 56px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.win-screen__sticker-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes stickerPopIn {
+  0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+  60% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
 .win-screen__emoji {
   font-size: 72px;
   margin: 16px 0 32px;

@@ -142,7 +142,7 @@ export default function FindDifferencesGame() {
   if (allDone) {
     return (
       <div className="game-page game-page--fd">
-        <WinScreen onPlayAgain={restart} />
+        <WinScreen onPlayAgain={restart} sticker="🔍" />
       </div>
     );
   }

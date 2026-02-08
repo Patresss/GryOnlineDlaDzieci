@@ -83,7 +83,7 @@ export default function MazeGame() {
 
   const restart = () => { setMazeIndex(0); setPos(MAZES[0].start); setPath([MAZES[0].start.join(",")]); setWon(false); setAllDone(false); };
 
-  if (allDone) return <div className="game-page game-page--maze"><WinScreen onPlayAgain={restart} /></div>;
+  if (allDone) return <div className="game-page game-page--maze"><WinScreen onPlayAgain={restart} sticker="🏁" /></div>;
 
   return (
     <div className="game-page game-page--maze">

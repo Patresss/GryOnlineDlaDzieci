@@ -68,7 +68,7 @@ export default function AdditionGame() {
 
   const restart = () => { setRound(genRound()); setScore(0); setFeedback(null); setIsWon(false); proc.current = false; resetKey(); };
 
-  if (isWon) return <div className="game-page game-page--addition"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--addition"><WinScreen onPlayAgain={restart} sticker="➕" /></div>;
 
   return (
     <div className="game-page game-page--addition">

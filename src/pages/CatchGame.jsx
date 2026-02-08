@@ -97,7 +97,7 @@ export default function CatchGame() {
     return (
       <div className="game-page game-page--catch">
         <div className="catch-final-score">Złapano: {score} 🦋</div>
-        <WinScreen onPlayAgain={start} />
+        <WinScreen onPlayAgain={start} sticker="🦋" />
       </div>
     );
   }

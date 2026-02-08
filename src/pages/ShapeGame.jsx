@@ -63,7 +63,7 @@ export default function ShapeGame() {
 
   const restart = () => window.location.reload();
 
-  if (isWon) return <div className="game-page game-page--shape"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--shape"><WinScreen onPlayAgain={restart} sticker="🔷" /></div>;
 
   return (
     <div className="game-page game-page--shape">

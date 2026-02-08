@@ -75,7 +75,7 @@ export default function ColorByNumberGame() {
 
   const restart = () => { setPicIndex(0); setFilled({}); setSelectedColor(null); setAllDone(false); };
 
-  if (allDone) return <div className="game-page game-page--cbn"><WinScreen onPlayAgain={restart} /></div>;
+  if (allDone) return <div className="game-page game-page--cbn"><WinScreen onPlayAgain={restart} sticker="🖌️" /></div>;
 
   const isDone = Object.keys(filled).length === pic.cells.length;
 

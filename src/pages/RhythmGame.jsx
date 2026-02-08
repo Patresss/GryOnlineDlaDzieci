@@ -110,7 +110,7 @@ export default function RhythmGame() {
 
   const restart = () => { setPatternIndex(0); setPhase("idle"); setResult(null); setPlayerBeats([]); setAllDone(false); };
 
-  if (allDone) return <div className="game-page game-page--rhythm"><WinScreen onPlayAgain={restart} /></div>;
+  if (allDone) return <div className="game-page game-page--rhythm"><WinScreen onPlayAgain={restart} sticker="🥁" /></div>;
 
   return (
     <div className="game-page game-page--rhythm">

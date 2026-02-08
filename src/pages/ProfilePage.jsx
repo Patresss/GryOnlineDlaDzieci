@@ -4,6 +4,35 @@ import BackButton from "../components/BackButton";
 import { useProfile } from "../context/ProfileContext";
 import "./ProfilePage.css";
 
+const GAME_NAMES = {
+  letterGame: { name: "Literki ABC", emoji: "🔤" },
+  firstLetterGame: { name: "Pierwsza literka", emoji: "🅰️" },
+  wordGame: { name: "Ułóż słowo", emoji: "📝" },
+  rhymeGame: { name: "Rymowanki", emoji: "🎶" },
+  syllableGame: { name: "Sylaby", emoji: "🗣️" },
+  numberGame: { name: "Cyferki 123", emoji: "🔢" },
+  countGame: { name: "Policz", emoji: "🔢" },
+  biggerGame: { name: "Większy mniejszy", emoji: "⚖️" },
+  additionGame: { name: "Dodawanie", emoji: "➕" },
+  sortSizeGame: { name: "Rozmiary", emoji: "📏" },
+  shapeGame: { name: "Kształty", emoji: "🔷" },
+  memoryGame: { name: "Memory", emoji: "🃏" },
+  whatDisappearedGame: { name: "Co zniknęło?", emoji: "👀" },
+  simonGame: { name: "Simon", emoji: "🎵" },
+  findDifferencesGame: { name: "Znajdź różnice", emoji: "🔍" },
+  colorGame: { name: "Kolory", emoji: "🎨" },
+  colorByNumberGame: { name: "Kolorowanie", emoji: "🖌️" },
+  colorMixGame: { name: "Mieszanie kolorów", emoji: "🧪" },
+  animalSoundGame: { name: "Dźwięki zwierząt", emoji: "🐾" },
+  animalHomeGame: { name: "Kto tu mieszka?", emoji: "🏡" },
+  seasonsGame: { name: "Pory roku", emoji: "🍂" },
+  catchGame: { name: "Złap motylka", emoji: "🦋" },
+  connectDotsGame: { name: "Połącz kropki", emoji: "✏️" },
+  mazeGame: { name: "Labirynt", emoji: "🏁" },
+  pianoGame: { name: "Pianino", emoji: "🎹" },
+  rhythmGame: { name: "Rytm", emoji: "🥁" },
+};
+
 export default function ProfilePage() {
   const { profile, setAvatar, setName, resetProfile, AVATARS } = useProfile();
   const [editing, setEditing] = useState(!profile.avatar);
@@ -70,12 +99,15 @@ export default function ProfilePage() {
             {Object.entries(profile.gamesCompleted).length === 0 ? (
               <p className="profile-empty">Jeszcze żadna gra nie ukończona!</p>
             ) : (
-              Object.entries(profile.gamesCompleted).map(([game, count]) => (
-                <div key={game} className="profile-completed__item">
-                  <span>{game}</span>
-                  <span className="profile-completed__count">x{count}</span>
-                </div>
-              ))
+              Object.entries(profile.gamesCompleted).map(([game, count]) => {
+                const info = GAME_NAMES[game];
+                return (
+                  <div key={game} className="profile-completed__item">
+                    <span>{info ? `${info.emoji} ${info.name}` : game}</span>
+                    <span className="profile-completed__count">x{count}</span>
+                  </div>
+                );
+              })
             )}
           </div>
 

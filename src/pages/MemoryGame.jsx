@@ -111,7 +111,7 @@ export default function MemoryGame() {
   if (isWon) {
     return (
       <div className="game-page game-page--memory">
-        <WinScreen onPlayAgain={() => { setMode(null); setDifficulty(null); }} />
+        <WinScreen onPlayAgain={() => { setMode(null); setDifficulty(null); }} sticker="🃏" />
       </div>
     );
   }

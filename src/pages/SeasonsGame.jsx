@@ -58,7 +58,7 @@ export default function SeasonsGame() {
 
   const restart = () => window.location.reload();
 
-  if (isWon) return <div className="game-page game-page--seasons"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--seasons"><WinScreen onPlayAgain={restart} sticker="🍂" /></div>;
 
   return (
     <div className="game-page game-page--seasons">

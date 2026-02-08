@@ -103,7 +103,7 @@ export default function LetterGame() {
   if (isWon) {
     return (
       <div className="game-page game-page--letters">
-        <WinScreen onPlayAgain={() => setDifficulty(null)} />
+        <WinScreen onPlayAgain={() => setDifficulty(null)} sticker="🔤" />
       </div>
     );
   }

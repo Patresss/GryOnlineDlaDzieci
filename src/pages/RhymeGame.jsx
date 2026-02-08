@@ -57,7 +57,7 @@ export default function RhymeGame() {
 
   const restart = () => window.location.reload();
 
-  if (isWon) return <div className="game-page game-page--rhyme"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--rhyme"><WinScreen onPlayAgain={restart} sticker="🎶" /></div>;
 
   return (
     <div className="game-page game-page--rhyme">

@@ -117,7 +117,7 @@ export default function NumberGame() {
   if (isWon) {
     return (
       <div className="game-page game-page--numbers">
-        <WinScreen onPlayAgain={() => setDifficulty(null)} />
+        <WinScreen onPlayAgain={() => setDifficulty(null)} sticker="🔢" />
       </div>
     );
   }

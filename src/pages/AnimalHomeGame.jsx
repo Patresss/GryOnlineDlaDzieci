@@ -58,7 +58,7 @@ export default function AnimalHomeGame() {
 
   const restart = () => window.location.reload();
 
-  if (isWon) return <div className="game-page game-page--animalhome"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--animalhome"><WinScreen onPlayAgain={restart} sticker="🏡" /></div>;
 
   return (
     <div className="game-page game-page--animalhome">

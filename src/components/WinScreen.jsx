@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./WinScreen.css";
 
-export default function WinScreen({ onPlayAgain }) {
+export default function WinScreen({ onPlayAgain, sticker }) {
   const hasSpoken = useRef(false);
 
   useEffect(() => {
@@ -37,6 +37,12 @@ export default function WinScreen({ onPlayAgain }) {
           <span>⭐</span>
         </div>
         <h1 className="win-screen__title">Brawo!</h1>
+        {sticker && (
+          <div className="win-screen__sticker">
+            <span className="win-screen__sticker-emoji">{sticker}</span>
+            <span className="win-screen__sticker-label">Nowa naklejka!</span>
+          </div>
+        )}
         <div className="win-screen__emoji">🎉</div>
         <button className="win-screen__button" onClick={onPlayAgain}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32">

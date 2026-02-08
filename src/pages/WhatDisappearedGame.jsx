@@ -75,7 +75,7 @@ export default function WhatDisappearedGame() {
 
   const restart = () => { setRound(genRound()); setPhase("show"); setScore(0); setFeedback(null); setIsWon(false); proc.current = false; };
 
-  if (isWon) return <div className="game-page game-page--disappeared"><WinScreen onPlayAgain={restart} /></div>;
+  if (isWon) return <div className="game-page game-page--disappeared"><WinScreen onPlayAgain={restart} sticker="👀" /></div>;
 
   return (
     <div className="game-page game-page--disappeared">
