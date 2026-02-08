@@ -26,7 +26,6 @@ export default function CatchGame() {
   const [butterflies, setButterflies] = useState([]);
   const [isWon, setIsWon] = useState(false);
   const [pops, setPops] = useState([]);
-  const animRef = useRef();
   const timerRef = useRef();
   const { addStar, addSticker } = useProfile();
 

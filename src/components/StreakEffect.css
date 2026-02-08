@@ -1,0 +1,44 @@
+.streak-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  pointer-events: none;
+  animation: streakAppear 1.5s ease forwards;
+}
+
+@keyframes streakAppear {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.streak-effect__rainbow {
+  height: 6px;
+  background: linear-gradient(90deg, #FF6B6B, #FFE66D, #51CF66, #74B9FF, #A29BFE, #FF6B6B);
+  background-size: 200% 100%;
+  animation: rainbowSlide 0.8s linear infinite;
+}
+
+@keyframes rainbowSlide {
+  from { background-position: 0% 0; }
+  to { background-position: 200% 0; }
+}
+
+.streak-effect__text {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFE66D;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: streakPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes streakPop {
+  from { transform: scale(0.5); }
+  50% { transform: scale(1.3); }
+  to { transform: scale(1); }
+}

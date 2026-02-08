@@ -27,7 +27,7 @@ export default function AnimalHomeGame() {
 
   useEffect(() => {
     if (!isWon && animal) {
-      setFeedback(null);
+      setFeedback(null); // eslint-disable-line react-hooks/set-state-in-effect -- reset state on new round
       proc.current = false;
       const t = setTimeout(() => speak(`Gdzie mieszka ${animal.name}?`), 400);
       return () => clearTimeout(t);

@@ -1,0 +1,55 @@
+.game-page--puzzle { background: linear-gradient(135deg, #6c5ce7, #fd79a8); }
+
+.puzzle-name {
+  font-size: clamp(20px, 5vw, 28px);
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  font-weight: 700;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.puzzle-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.2);
+  padding: 8px 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.puzzle-preview__label { color: white; font-weight: 600; font-size: 14px; }
+
+.puzzle-preview__grid {
+  display: grid;
+  gap: 2px;
+}
+
+.puzzle-preview__cell { font-size: 20px; text-align: center; }
+
+.puzzle-board {
+  display: grid;
+  gap: 8px;
+  max-width: 320px;
+  width: 100%;
+  padding: 16px;
+}
+
+.puzzle-cell {
+  aspect-ratio: 1;
+  font-size: clamp(36px, 10vw, 56px);
+  background: white;
+  border-radius: 12px;
+  border: 4px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.puzzle-cell:hover { transform: scale(1.05); }
+.puzzle-cell--selected { border-color: #FFE66D; background: #fffde7; transform: scale(1.08); }
+.puzzle-cell--correct { border-color: rgba(81, 207, 102, 0.3); }

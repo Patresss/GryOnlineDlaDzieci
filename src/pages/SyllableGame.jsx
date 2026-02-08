@@ -39,7 +39,7 @@ export default function SyllableGame() {
 
   useEffect(() => {
     if (!isWon && round) {
-      setTaps(0);
+      setTaps(0); // eslint-disable-line react-hooks/set-state-in-effect -- reset state on new round
       setBounces([]);
       setFeedback(null);
       proc.current = false;

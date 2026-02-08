@@ -11,17 +11,6 @@ export function speak(text, lang = "pl-PL", rate = 0.85) {
   }
 }
 
-const audioCache = {};
-
-function getCachedAudio(frequency, duration, type = "sine") {
-  const key = `${frequency}-${duration}-${type}`;
-  if (audioCache[key]) return audioCache[key];
-
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  audioCache[key] = { ctx, frequency, duration, type };
-  return audioCache[key];
-}
-
 export function playTone(frequency, duration = 0.2, type = "sine") {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -35,7 +24,7 @@ export function playTone(frequency, duration = 0.2, type = "sine") {
     gain.connect(ctx.destination);
     osc.start();
     osc.stop(ctx.currentTime + duration);
-  } catch {}
+  } catch { /* audio not available */ }
 }
 
 export function playSuccess() {
@@ -65,12 +54,12 @@ export function playNote(noteIndex) {
 
 export default function useSound() {
   return {
-    speak: useCallback(speak, []),
-    playSuccess: useCallback(playSuccess, []),
-    playError: useCallback(playError, []),
-    playWin: useCallback(playWin, []),
-    playClick: useCallback(playClick, []),
-    playNote: useCallback(playNote, []),
-    playTone: useCallback(playTone, []),
+    speak: useCallback((...args) => speak(...args), []),
+    playSuccess: useCallback((...args) => playSuccess(...args), []),
+    playError: useCallback((...args) => playError(...args), []),
+    playWin: useCallback((...args) => playWin(...args), []),
+    playClick: useCallback((...args) => playClick(...args), []),
+    playNote: useCallback((...args) => playNote(...args), []),
+    playTone: useCallback((...args) => playTone(...args), []),
   };
 }

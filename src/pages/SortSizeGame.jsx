@@ -94,7 +94,7 @@ export default function SortSizeGame() {
       <div className="game-page__progress"><ProgressBar current={score} total={TOTAL} /></div>
       <p className="game-page__hint">Klikaj od <strong>najmniejszego</strong> do <strong>największego</strong>!</p>
       <div className={`sort-placed ${feedback === "correct" ? "sort-placed--correct" : feedback === "wrong" ? "sort-placed--wrong" : ""}`}>
-        {placed.map((item, i) => (
+        {placed.map((item) => (
           <span key={item.id} className="sort-placed-item" style={{ fontSize: `${item.size}px` }}>{round.emoji}</span>
         ))}
         {placed.length > 0 && !feedback && (

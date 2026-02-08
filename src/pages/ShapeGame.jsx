@@ -31,7 +31,7 @@ export default function ShapeGame() {
   useEffect(() => {
     if (round) {
       const others = shuffle(shapes.filter((s) => s.name !== round.name)).slice(0, 3);
-      setOptions(shuffle([round, ...others]));
+      setOptions(shuffle([round, ...others])); // eslint-disable-line react-hooks/set-state-in-effect -- reset options on new round
       setFeedback(null);
       proc.current = false;
       const t = setTimeout(() => speak(`Znajdź ${round.name.toLowerCase()}`), 400);

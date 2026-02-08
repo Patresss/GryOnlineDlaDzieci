@@ -28,6 +28,14 @@ const ALL_STICKERS = [
   { emoji: "🎹", name: "Pianino" },
   { emoji: "🥁", name: "Rytm" },
   { emoji: "🔍", name: "Różnice" },
+  { emoji: "➖", name: "Odejmowanie" },
+  { emoji: "🕐", name: "Zegar" },
+  { emoji: "👤", name: "Cienie" },
+  { emoji: "🔢", name: "Sekwencje" },
+  { emoji: "🧩", name: "Puzzle" },
+  { emoji: "🔄", name: "Przeciwieństwa" },
+  { emoji: "😊", name: "Emocje" },
+  { emoji: "👨‍🍳", name: "Gotowanie" },
 ];
 
 export default function RewardsPage() {

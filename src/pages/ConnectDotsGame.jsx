@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback } from "react";
 import BackButton from "../components/BackButton";
 import WinScreen from "../components/WinScreen";
 import { useProfile } from "../context/ProfileContext";

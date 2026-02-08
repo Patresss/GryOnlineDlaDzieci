@@ -84,6 +84,13 @@
   animation: fadeIn 0.4s ease;
 }
 
+.profile-display__avatar-wrap {
+  border: 5px solid;
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
 .profile-display__avatar {
   font-size: 80px;
   width: 120px;
@@ -93,13 +100,35 @@
   justify-content: center;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .profile-display__name {
   font-size: 28px;
   color: white;
   margin: 0;
+}
+
+/* Level display */
+.profile-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.profile-level__emoji { font-size: 22px; }
+.profile-level__name { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+
+.profile-level__next {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  text-align: center;
 }
 
 .profile-stats {
@@ -148,6 +177,48 @@
 .profile-completed__count { font-weight: 700; }
 
 .profile-empty { color: rgba(255, 255, 255, 0.7); text-align: center; font-size: 14px; }
+
+/* Theme picker */
+.profile-themes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-theme {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 3px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  font-family: inherit;
+  color: white;
+  min-width: 90px;
+}
+
+.profile-theme:hover:not(:disabled) { transform: scale(1.05); }
+.profile-theme--active { border-color: white; background: rgba(255, 255, 255, 0.3); }
+.profile-theme--locked { opacity: 0.5; cursor: default; }
+
+.profile-theme__preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.profile-theme__name {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
 
 .profile-actions {
   display: flex;

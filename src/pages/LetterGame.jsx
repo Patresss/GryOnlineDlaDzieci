@@ -88,8 +88,8 @@ export default function LetterGame() {
   );
 
   useEffect(() => {
-    if (lastKey && difficulty) handleKey(lastKey);
-  }, [lastKey]);
+    if (lastKey && difficulty) handleKey(lastKey); // eslint-disable-line react-hooks/set-state-in-effect -- keyboard listener bridge
+  }, [lastKey, difficulty, handleKey]);
 
   if (!difficulty) {
     return (

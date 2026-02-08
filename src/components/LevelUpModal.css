@@ -1,0 +1,118 @@
+.levelup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  animation: levelupFade 0.3s ease;
+  padding: 24px;
+}
+
+@keyframes levelupFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.levelup-modal {
+  background: white;
+  border-radius: 32px;
+  padding: 40px 32px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: levelupPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes levelupPop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.levelup-fireworks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.levelup-spark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color);
+  animation: sparkFly 1s ease-out var(--delay) both;
+}
+
+@keyframes sparkFly {
+  0% {
+    transform: rotate(var(--angle)) translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateY(-120px) scale(0);
+    opacity: 0;
+  }
+}
+
+.levelup-emoji {
+  font-size: 80px;
+  animation: levelupBounce 1s ease infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes levelupBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.1); }
+}
+
+.levelup-title {
+  font-size: 28px;
+  color: var(--color-text);
+  margin: 8px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.levelup-level {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.levelup-desc {
+  font-size: 16px;
+  color: var(--color-text);
+  opacity: 0.7;
+  margin: 0 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.levelup-btn {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #FFE66D, #fdcb6e);
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 1;
+  font-family: inherit;
+}
+
+.levelup-btn:hover {
+  transform: scale(1.05);
+}

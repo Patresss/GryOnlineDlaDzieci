@@ -33,7 +33,7 @@ export default function RhythmGame() {
     setPhase("playing");
     setResult(null);
     setPlayerBeats([]);
-    pattern.beats.forEach((t, i) => {
+    pattern.beats.forEach((t) => {
       setTimeout(() => {
         setDrumActive(true);
         playTone(150, 0.15, "triangle");

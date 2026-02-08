@@ -71,8 +71,8 @@ export default function CountGame() {
   );
 
   useEffect(() => {
-    if (lastKey) handleKey(lastKey);
-  }, [lastKey]);
+    if (lastKey) handleKey(lastKey); // eslint-disable-line react-hooks/set-state-in-effect -- keyboard listener bridge
+  }, [lastKey, handleKey]);
 
   const restart = useCallback(() => {
     setRound(generateRound());

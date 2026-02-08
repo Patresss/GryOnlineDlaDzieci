@@ -1,0 +1,90 @@
+.game-page--clock {
+  background: linear-gradient(135deg, #fdcb6e, #74b9ff);
+}
+
+.clock-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+}
+
+.clock-display__text {
+  font-size: clamp(22px, 5vw, 32px);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.clock-display__speak-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.clock-display__speak-btn:hover { transform: scale(1.2); }
+
+.clock-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 0 16px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.clock-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+  border: 3px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.3s;
+  font-family: inherit;
+}
+
+.clock-option:hover:not(:disabled) { transform: scale(1.05); }
+.clock-option:disabled { cursor: default; }
+
+.clock-option--correct {
+  border-color: var(--color-success);
+  animation: correctPulse 0.6s ease;
+}
+
+.clock-option--wrong {
+  border-color: var(--color-error);
+  animation: shake 0.5s ease;
+}
+
+.clock-option__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.05); }
+  60% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}

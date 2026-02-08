@@ -27,7 +27,7 @@ export default function SeasonsGame() {
 
   useEffect(() => {
     if (!isWon && item) {
-      setFeedback(null);
+      setFeedback(null); // eslint-disable-line react-hooks/set-state-in-effect -- reset state on new round
       proc.current = false;
       const t = setTimeout(() => speak(`${item.name}. Do jakiej pory roku pasuje?`), 400);
       return () => clearTimeout(t);

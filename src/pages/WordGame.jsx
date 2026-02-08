@@ -31,7 +31,7 @@ export default function WordGame() {
   useEffect(() => {
     if (word) {
       const letters = word.word.split("").map((l, i) => ({ letter: l, id: i }));
-      setScrambled(shuffle(letters));
+      setScrambled(shuffle(letters)); // eslint-disable-line react-hooks/set-state-in-effect -- reset state on new round
       setPlaced([]);
       setFeedback(null);
       proc.current = false;

@@ -24,7 +24,7 @@ export default function RhymeGame() {
 
   useEffect(() => {
     if (round) {
-      setOptions(shuffle([round.correct, ...round.wrong]));
+      setOptions(shuffle([round.correct, ...round.wrong])); // eslint-disable-line react-hooks/set-state-in-effect -- reset options on new round
       const t = setTimeout(() => speak(`Co się rymuje ze słowem ${round.word}?`), 400);
       return () => clearTimeout(t);
     }

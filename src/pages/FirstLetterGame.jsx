@@ -38,7 +38,7 @@ export default function FirstLetterGame() {
       const t = setTimeout(() => speak(`Co zaczyna się na literę ${round.correct.letter}?`), 400);
       return () => clearTimeout(t);
     }
-  }, [currentRound, isWon]);
+  }, [currentRound, isWon, round]);
 
   const handlePick = useCallback(
     (item) => {

@@ -42,8 +42,8 @@ export default function ColorGame() {
   }, [currentRound, isWon, current]);
 
   useEffect(() => {
-    if (current) setOptions(getOptions(current, colors));
-  }, [currentRound]);
+    if (current) setOptions(getOptions(current, colors)); // eslint-disable-line react-hooks/set-state-in-effect -- reset options on new round
+  }, [currentRound, current]);
 
   const handlePick = useCallback(
     (color) => {

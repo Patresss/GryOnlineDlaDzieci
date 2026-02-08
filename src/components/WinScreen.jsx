@@ -1,8 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import "./WinScreen.css";
 
 export default function WinScreen({ onPlayAgain, sticker }) {
   const hasSpoken = useRef(false);
+
+  /* eslint-disable react-hooks/purity -- one-time random init for confetti animation */
+  const confettiStyles = useMemo(
+    () => Array.from({ length: 30 }, () => ({
+      delay: Math.random() * 2,
+      x: Math.random() * 100,
+      rotation: Math.random() * 360,
+    })),
+    []
+  );
+  /* eslint-enable react-hooks/purity */
 
   useEffect(() => {
     if (!hasSpoken.current && "speechSynthesis" in window) {
@@ -18,14 +29,14 @@ export default function WinScreen({ onPlayAgain, sticker }) {
     <div className="win-screen">
       <div className="win-screen__content">
         <div className="win-screen__confetti">
-          {Array.from({ length: 30 }, (_, i) => (
+          {confettiStyles.map((c, i) => (
             <div
               key={i}
               className="win-screen__confetti-piece"
               style={{
-                "--delay": `${Math.random() * 2}s`,
-                "--x": `${Math.random() * 100}vw`,
-                "--rotation": `${Math.random() * 360}deg`,
+                "--delay": `${c.delay}s`,
+                "--x": `${c.x}vw`,
+                "--rotation": `${c.rotation}deg`,
                 "--color": ["#FF6B6B", "#4ECDC4", "#FFE66D", "#74B9FF", "#A29BFE", "#51CF66"][i % 6],
               }}
             />

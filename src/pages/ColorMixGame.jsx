@@ -24,7 +24,7 @@ export default function ColorMixGame() {
 
   useEffect(() => {
     if (round) {
-      setOptions(shuffle([round.result, ...round.wrong]));
+      setOptions(shuffle([round.result, ...round.wrong])); // eslint-disable-line react-hooks/set-state-in-effect -- reset state on new round
       setMixed(false);
       setFeedback(null);
       proc.current = false;

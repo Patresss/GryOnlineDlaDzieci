@@ -30,7 +30,7 @@ export default function AdditionGame() {
 
   useEffect(() => {
     if (!isWon) {
-      setShowSecond(false);
+      setShowSecond(false); // eslint-disable-line react-hooks/set-state-in-effect -- reset state on new round
       const t1 = setTimeout(() => speak(`${round.a} plus ${round.b} to ile?`), 400);
       const t2 = setTimeout(() => setShowSecond(true), 800);
       return () => { clearTimeout(t1); clearTimeout(t2); };
@@ -64,7 +64,7 @@ export default function AdditionGame() {
     [feedback, isWon, round, score, resetKey, addStar, addSticker]
   );
 
-  useEffect(() => { if (lastKey) handleKey(lastKey); }, [lastKey]);
+  useEffect(() => { if (lastKey) handleKey(lastKey); }, [lastKey, handleKey]); // eslint-disable-line react-hooks/set-state-in-effect -- keyboard listener bridge
 
   const restart = () => { setRound(genRound()); setScore(0); setFeedback(null); setIsWon(false); proc.current = false; resetKey(); };
 
