@@ -13,7 +13,7 @@ const WORDS = [
   { word: "Mo-tyl", emoji: "🦋", syllables: 2 },
   { word: "Ba-lon", emoji: "🎈", syllables: 2 },
   { word: "Kwia-tek", emoji: "🌸", syllables: 2 },
-  { word: "Ja-błko", emoji: "🍎", syllables: 2 },
+  { word: "Jab-łko", emoji: "🍎", syllables: 2 },
   { word: "Ko-lo-ry", emoji: "🎨", syllables: 3 },
   { word: "Mo-ty-lek", emoji: "🦋", syllables: 3 },
   { word: "Ra-kie-ta", emoji: "🚀", syllables: 3 },

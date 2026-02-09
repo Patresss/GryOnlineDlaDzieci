@@ -11,7 +11,7 @@ const puzzles = [
     gridSize: 2,
   },
   {
-    name: "Ogrod",
+    name: "Ogród",
     pieces: [
       { emoji: "☀️", correctPosition: 0 },
       { emoji: "🌈", correctPosition: 1 },
@@ -53,7 +53,7 @@ const puzzles = [
 
   // 3x3 puzzles
   {
-    name: "Plaza",
+    name: "Plaża",
     pieces: [
       { emoji: "☀️", correctPosition: 0 },
       { emoji: "⛅", correctPosition: 1 },
@@ -68,7 +68,7 @@ const puzzles = [
     gridSize: 3,
   },
   {
-    name: "Dzungla",
+    name: "Dżungla",
     pieces: [
       { emoji: "🌴", correctPosition: 0 },
       { emoji: "🌳", correctPosition: 1 },
@@ -98,11 +98,11 @@ const puzzles = [
     gridSize: 3,
   },
   {
-    name: "Podwodny swiat",
+    name: "Podwodny świat",
     pieces: [
       { emoji: "🌊", correctPosition: 0 },
       { emoji: "⛵", correctPosition: 1 },
-      { emoji: "🌊", correctPosition: 2 },
+      { emoji: "🐬", correctPosition: 2 },
       { emoji: "🐟", correctPosition: 3 },
       { emoji: "🐙", correctPosition: 4 },
       { emoji: "🐠", correctPosition: 5 },

@@ -12,7 +12,7 @@ const shadows = [
     options: ["🐶", "🐱", "🐰", "🐭"],
   },
   {
-    name: "Samochod",
+    name: "Samochód",
     emoji: "🚗",
     shadowEmoji: "🚗",
     options: ["🚌", "🚂", "🚗", "🚲"],
@@ -42,7 +42,7 @@ const shadows = [
     options: ["🌙", "☀️", "⭐", "💎"],
   },
   {
-    name: "Jablko",
+    name: "Jabłko",
     emoji: "🍎",
     shadowEmoji: "🍎",
     options: ["🍊", "🍋", "🍇", "🍎"],
@@ -54,13 +54,13 @@ const shadows = [
     options: ["☂️", "🌂", "🎪", "🍄"],
   },
   {
-    name: "Slon",
+    name: "Słoń",
     emoji: "🐘",
     shadowEmoji: "🐘",
     options: ["🐻", "🐘", "🦏", "🐫"],
   },
   {
-    name: "Lodzka",
+    name: "Łódka",
     emoji: "⛵",
     shadowEmoji: "⛵",
     options: ["🚢", "🛶", "⛵", "🚀"],
@@ -84,7 +84,7 @@ const shadows = [
     options: ["🐦", "🦋", "🐝", "🦅"],
   },
   {
-    name: "Ksiezyc",
+    name: "Księżyc",
     emoji: "🌙",
     shadowEmoji: "🌙",
     options: ["☀️", "⭐", "🌙", "🪐"],

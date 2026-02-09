@@ -4,11 +4,11 @@ const words = [
   { word: "LAS", emoji: "🌲", hint: "Rosną tam drzewa" },
   { word: "NOS", emoji: "👃", hint: "Wąchamy nim" },
   { word: "OKO", emoji: "👁️", hint: "Widzimy nim" },
-  { word: "LIS", emoji: "🦊", hint: "Rudy zwierzak" },
+  { word: "LIS", emoji: "🦊", hint: "Rudy zwierzak z bajek" },
   { word: "RAK", emoji: "🦀", hint: "Mieszka w wodzie, ma kleszcze" },
   { word: "BUS", emoji: "🚌", hint: "Jeździmy nim" },
   { word: "SER", emoji: "🧀", hint: "Lubi go myszka" },
-  { word: "MIS", emoji: "🧸", hint: "Pluszowy przyjaciel" },
+  { word: "MIŚ", emoji: "🧸", hint: "Pluszowy przyjaciel" },
   { word: "SOK", emoji: "🧃", hint: "Pijemy go" },
   { word: "BUT", emoji: "👢", hint: "Nosimy na stopie" },
 ];

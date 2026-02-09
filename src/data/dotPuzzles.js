@@ -31,16 +31,15 @@ const dotPuzzles = [
   {
     name: "Łódka",
     emoji: "⛵",
-    closePath: false,
+    closePath: true,
     dots: [
       { x: 50, y: 15 },
-      { x: 50, y: 55 },
-      { x: 85, y: 55 },
-      { x: 50, y: 55 },
-      { x: 15, y: 55 },
-      { x: 10, y: 75 },
-      { x: 90, y: 75 },
-      { x: 85, y: 55 },
+      { x: 65, y: 50 },
+      { x: 85, y: 50 },
+      { x: 80, y: 75 },
+      { x: 20, y: 75 },
+      { x: 15, y: 50 },
+      { x: 35, y: 50 },
     ],
   },
   {
