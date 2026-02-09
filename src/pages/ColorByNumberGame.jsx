@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import BackButton from "../components/BackButton";
 import WinScreen from "../components/WinScreen";
 import { useProfile } from "../context/ProfileContext";
-import { playClick, playSuccess } from "../hooks/useSound";
+import { playClick, playSuccess, playError, speak } from "../hooks/useSound";
 import "./ColorByNumberGame.css";
 
 const PALETTE = [
@@ -56,11 +56,17 @@ export default function ColorByNumberGame() {
       setFilled(newFilled);
 
       if (Object.keys(newFilled).length === pic.cells.length) {
-        playSuccess();
-        if (picIndex + 1 >= PICTURES.length) {
-          setAllDone(true);
-          addStar("colorByNumberGame");
-          addSticker("🖌️");
+        const allCorrect = pic.cells.every((cell) => newFilled[cell.id] === cell.num);
+        if (allCorrect) {
+          playSuccess();
+          if (picIndex + 1 >= PICTURES.length) {
+            setAllDone(true);
+            addStar("colorByNumberGame");
+            addSticker("🖌️");
+          }
+        } else {
+          playError();
+          speak("Sprawdź kolory!");
         }
       }
     },

@@ -48,7 +48,7 @@ export default function BuilderGame() {
     const p = pat || patterns[roundIdx];
     if (!p) return;
     setPattern(p);
-    setUserGrid(Array.from({ length: gridSize }, () => Array(gridSize).fill(0)));
+    setUserGrid(Array.from({ length: gridSize }, () => Array(gridSize).fill(-1)));
     setWrongCells([]);
     setPhase("memorize");
     setFeedback(null);
@@ -85,7 +85,7 @@ export default function BuilderGame() {
     playClick();
     setUserGrid((prev) => {
       const next = prev.map((row) => [...row]);
-      next[r][c] = (next[r][c] + 1) % COLORS.length;
+      next[r][c] = next[r][c] === -1 ? 0 : (next[r][c] + 1) % COLORS.length;
       return next;
     });
   }, [phase, feedback]);
@@ -180,7 +180,7 @@ export default function BuilderGame() {
               } ${
                 feedback === "correct" ? "builder__cell--correct" : ""
               }`}
-              style={{ background: COLORS[colorIdx].css }}
+              style={{ background: colorIdx === -1 ? "#dfe6e9" : COLORS[colorIdx].css }}
               onClick={() => handleCellClick(r, c)}
               disabled={phase !== "build" || !!feedback}
             />

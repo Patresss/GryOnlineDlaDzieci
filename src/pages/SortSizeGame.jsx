@@ -67,7 +67,7 @@ export default function SortSizeGame() {
           playError();
           setTimeout(() => {
             setPlaced([]);
-            setAvailable(round.shuffled.sort(() => Math.random() - 0.5));
+            setAvailable([...round.shuffled].sort(() => Math.random() - 0.5));
             setFeedback(null);
             proc.current = false;
           }, 800);

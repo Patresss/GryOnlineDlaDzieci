@@ -1,62 +1,62 @@
 const emotions = [
-  // Radosc
+  // Radość
   {
-    scene: "Dziecko dostalo prezent na urodziny",
+    scene: "Dziecko dostało prezent na urodziny",
     emoji: "🎁",
     correctEmotion: "😊",
-    emotionName: "radosc",
+    emotionName: "radość",
     options: ["😊", "😢", "😠", "😱"],
   },
   {
-    scene: "Dzieci bawia sie razem na placu zabaw",
+    scene: "Dzieci bawią się razem na placu zabaw",
     emoji: "🛝",
     correctEmotion: "😊",
-    emotionName: "radosc",
+    emotionName: "radość",
     options: ["😴", "😊", "😢", "😠"],
   },
 
   // Smutek
   {
-    scene: "Balon poleciал w niebo i zniknal",
+    scene: "Balon poleciał w niebo i zniknął",
     emoji: "🎈",
     correctEmotion: "😢",
     emotionName: "smutek",
     options: ["😊", "😢", "😠", "😮"],
   },
   {
-    scene: "Przyjaciel przeprowadzil sie do innego miasta",
+    scene: "Przyjaciel przeprowadził się do innego miasta",
     emoji: "🏘️",
     correctEmotion: "😢",
     emotionName: "smutek",
     options: ["😠", "😮", "😢", "😊"],
   },
 
-  // Zlosc
+  // Złość
   {
-    scene: "Ktos zabral zabawke bez pytania",
+    scene: "Ktoś zabrał zabawkę bez pytania",
     emoji: "🧸",
     correctEmotion: "😠",
-    emotionName: "zlosc",
+    emotionName: "złość",
     options: ["😊", "😢", "😠", "😴"],
   },
   {
-    scene: "Wieza z klockow ciagle sie przewraca",
+    scene: "Wieża z klocków ciągle się przewraca",
     emoji: "🧱",
     correctEmotion: "😠",
-    emotionName: "zlosc",
+    emotionName: "złość",
     options: ["😮", "😠", "😊", "😢"],
   },
 
   // Zaskoczenie
   {
-    scene: "Za drzwiami czekala niespodzianka",
+    scene: "Za drzwiami czekała niespodzianka",
     emoji: "🚪",
     correctEmotion: "😮",
     emotionName: "zaskoczenie",
     options: ["😊", "😢", "😮", "😠"],
   },
   {
-    scene: "Magik wyczarowal krolika z kapelusza",
+    scene: "Magik wyczarował królika z kapelusza",
     emoji: "🎩",
     correctEmotion: "😮",
     emotionName: "zaskoczenie",
@@ -72,7 +72,7 @@ const emotions = [
     options: ["😊", "😱", "😠", "😮"],
   },
   {
-    scene: "W ciemnym pokoju cos zaszeleScilo",
+    scene: "W ciemnym pokoju coś zaszeleściło",
     emoji: "🌑",
     correctEmotion: "😱",
     emotionName: "strach",
@@ -81,42 +81,42 @@ const emotions = [
 
   // Duma
   {
-    scene: "Dziecko samo zawiazalo buty",
+    scene: "Dziecko samo zawiązało buty",
     emoji: "👟",
-    correctEmotion: "😤",
+    correctEmotion: "😊",
     emotionName: "duma",
-    options: ["😤", "😢", "😱", "😴"],
+    options: ["😊", "😢", "😱", "😴"],
   },
   {
-    scene: "Narysowalo piekny obrazek dla mamy",
+    scene: "Narysowało piękny obrazek dla mamy",
     emoji: "🎨",
-    correctEmotion: "😤",
+    correctEmotion: "😊",
     emotionName: "duma",
-    options: ["😠", "😤", "😊", "😱"],
+    options: ["😠", "😊", "😴", "😱"],
   },
 
-  // Zmeczenie
+  // Zmęczenie
   {
-    scene: "Caly dzien biegalo i bawilo sie na dworze",
+    scene: "Cały dzień biegało i bawiło się na dworze",
     emoji: "🏃",
     correctEmotion: "😴",
-    emotionName: "zmeczenie",
+    emotionName: "zmęczenie",
     options: ["😊", "😠", "😴", "😮"],
   },
   {
-    scene: "Jest bardzo pozno i pora spac",
+    scene: "Jest bardzo późno i pora spać",
     emoji: "🌙",
     correctEmotion: "😴",
-    emotionName: "zmeczenie",
+    emotionName: "zmęczenie",
     options: ["😴", "😊", "😢", "😠"],
   },
 
-  // Milosc
+  // Miłość
   {
     scene: "Mama przytula dziecko przed snem",
     emoji: "🤗",
     correctEmotion: "🥰",
-    emotionName: "milosc",
+    emotionName: "miłość",
     options: ["😠", "😱", "🥰", "😴"],
   },
 ];

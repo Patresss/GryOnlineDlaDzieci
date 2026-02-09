@@ -7,26 +7,50 @@ import { useProfile } from "../context/ProfileContext";
 import { speak, playSuccess, playError, playClick } from "../hooks/useSound";
 import "./TreasureGame.css";
 
-function generateGrid(size) {
-  const grid = Array.from({ length: size }, () => Array(size).fill("empty"));
-  // Place player at top-left
-  grid[0][0] = "player";
-  // Place treasure at bottom-right area
-  const tr = size - 1 - Math.floor(Math.random() * 2);
-  const tc = size - 1 - Math.floor(Math.random() * 2);
-  grid[tr][tc] = "treasure";
-  // Place obstacles (avoiding player, treasure, and ensuring path)
-  const obstacleCount = Math.floor(size * size * 0.15);
-  let placed = 0;
-  while (placed < obstacleCount) {
-    const r = Math.floor(Math.random() * size);
-    const c = Math.floor(Math.random() * size);
-    if (grid[r][c] === "empty" && !(r <= 1 && c <= 1) && !(r >= size - 2 && c >= size - 2)) {
-      grid[r][c] = "rock";
-      placed++;
+function hasPath(grid, size, sr, sc, tr, tc) {
+  const visited = Array.from({ length: size }, () => Array(size).fill(false));
+  const queue = [[sr, sc]];
+  visited[sr][sc] = true;
+  while (queue.length > 0) {
+    const [r, c] = queue.shift();
+    if (r === tr && c === tc) return true;
+    for (const [dr, dc] of [[-1,0],[1,0],[0,-1],[0,1]]) {
+      const nr = r + dr, nc = c + dc;
+      if (nr >= 0 && nr < size && nc >= 0 && nc < size && !visited[nr][nc] && grid[nr][nc] !== "rock") {
+        visited[nr][nc] = true;
+        queue.push([nr, nc]);
+      }
     }
   }
-  return { grid, playerPos: [0, 0], treasurePos: [tr, tc] };
+  return false;
+}
+
+function generateGrid(size) {
+  for (let attempt = 0; attempt < 50; attempt++) {
+    const grid = Array.from({ length: size }, () => Array(size).fill("empty"));
+    grid[0][0] = "player";
+    const tr = size - 1 - Math.floor(Math.random() * 2);
+    const tc = size - 1 - Math.floor(Math.random() * 2);
+    grid[tr][tc] = "treasure";
+    const obstacleCount = Math.floor(size * size * 0.15);
+    let placed = 0;
+    while (placed < obstacleCount) {
+      const r = Math.floor(Math.random() * size);
+      const c = Math.floor(Math.random() * size);
+      if (grid[r][c] === "empty" && !(r <= 1 && c <= 1) && !(r >= size - 2 && c >= size - 2)) {
+        grid[r][c] = "rock";
+        placed++;
+      }
+    }
+    if (hasPath(grid, size, 0, 0, tr, tc)) {
+      return { grid, playerPos: [0, 0], treasurePos: [tr, tc] };
+    }
+  }
+  // Fallback: no obstacles
+  const grid = Array.from({ length: size }, () => Array(size).fill("empty"));
+  grid[0][0] = "player";
+  grid[size - 1][size - 1] = "treasure";
+  return { grid, playerPos: [0, 0], treasurePos: [size - 1, size - 1] };
 }
 
 const CELL_EMOJI = {

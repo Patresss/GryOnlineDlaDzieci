@@ -42,7 +42,7 @@ const rhymes = [
   {
     word: "Mysz",
     wordEmoji: "🐭",
-    correct: { word: "Cisz", emoji: "🤫" },
+    correct: { word: "Tusz", emoji: "🖊️" },
     wrong: [
       { word: "Jabłko", emoji: "🍎" },
       { word: "Zamek", emoji: "🏰" },
@@ -52,7 +52,7 @@ const rhymes = [
   {
     word: "Miś",
     wordEmoji: "🧸",
-    correct: { word: "Liś", emoji: "🦊" },
+    correct: { word: "Ryś", emoji: "🐱" },
     wrong: [
       { word: "Gruszka", emoji: "🍐" },
       { word: "Okno", emoji: "🪟" },
