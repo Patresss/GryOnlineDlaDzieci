@@ -1,4 +1,5 @@
 import { useEffect, useRef, useMemo } from "react";
+import { speak } from "../hooks/useSound";
 import "./WinScreen.css";
 
 export default function WinScreen({ onPlayAgain, sticker }) {
@@ -16,12 +17,9 @@ export default function WinScreen({ onPlayAgain, sticker }) {
   /* eslint-enable react-hooks/purity */
 
   useEffect(() => {
-    if (!hasSpoken.current && "speechSynthesis" in window) {
+    if (!hasSpoken.current) {
       hasSpoken.current = true;
-      const utterance = new SpeechSynthesisUtterance("Brawo! Wygrałeś!");
-      utterance.lang = "pl-PL";
-      utterance.rate = 0.9;
-      speechSynthesis.speak(utterance);
+      speak("Brawo! Wygrałeś!", "pl-PL", 0.9);
     }
   }, []);
 

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { setSoundEnabledRuntime as syncSoundEnabledRuntime } from "../hooks/useSound";
 
 const ProfileContext = createContext();
 
@@ -74,7 +75,10 @@ export function ProfileProvider({ children }) {
   const setName = (name) => setProfile((p) => ({ ...p, name }));
   const setAgeGroup = (ageGroup) => setProfile((p) => ({ ...p, ageGroup }));
   const setTheme = (theme) => setProfile((p) => ({ ...p, theme }));
-  const setSoundEnabled = (soundEnabled) => setProfile((p) => ({ ...p, soundEnabled }));
+  const setSoundEnabled = (soundEnabled) => {
+    syncSoundEnabledRuntime(soundEnabled);
+    setProfile((p) => ({ ...p, soundEnabled }));
+  };
   const setDarkMode = useCallback((darkMode) => setProfile((p) => ({ ...p, darkMode })), []);
   const setOnboardingDone = () => setProfile((p) => ({ ...p, onboardingDone: true }));
   const markHelpSeen = (gameId) => setProfile((p) => ({ ...p, helpSeen: { ...p.helpSeen, [gameId]: true } }));
@@ -115,6 +119,10 @@ export function ProfileProvider({ children }) {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", profile.darkMode);
   }, [profile.darkMode]);
+
+  useEffect(() => {
+    syncSoundEnabledRuntime(profile.soundEnabled);
+  }, [profile.soundEnabled]);
 
   const level = getLevel(profile.stars);
   const [prevLevelId, setPrevLevelId] = useState(level.id);
