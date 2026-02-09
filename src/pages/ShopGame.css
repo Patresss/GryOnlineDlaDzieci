@@ -1,0 +1,180 @@
+.game-page--shop {
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #00b894 100%);
+}
+
+.shop__title {
+  font-size: clamp(24px, 5vw, 36px);
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.shop__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 32px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.shop__item--correct {
+  border-color: #51CF66;
+  animation: shopBounce 0.5s ease;
+}
+
+.shop__item--wrong {
+  border-color: #FF6B6B;
+  animation: shopShake 0.4s ease;
+}
+
+@keyframes shopBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shopShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.shop__item-emoji {
+  font-size: 64px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.shop__item-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.shop__item-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 4px 20px;
+  border-radius: 50px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.shop__selected {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.shop__total {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  margin: 0 0 8px;
+}
+
+.shop__selected-coins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+.shop__empty {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  align-self: center;
+}
+
+.shop__coins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.shop__coin {
+  padding: 10px 16px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s, background 0.15s;
+}
+
+.shop__coin:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.shop__coin:active {
+  transform: scale(0.95);
+}
+
+.shop__coin--selected {
+  background: rgba(255, 230, 109, 0.4);
+  border-color: rgba(255, 230, 109, 0.7);
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.shop__coin:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.shop__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.shop__pay-btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #51CF66, #20bf6b);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(81, 207, 102, 0.4);
+  transition: transform 0.2s;
+}
+
+.shop__pay-btn:hover { transform: scale(1.05); }
+.shop__pay-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.shop__clear-btn {
+  padding: 14px 24px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.shop__clear-btn:hover { background: rgba(255, 255, 255, 0.35); }
+.shop__clear-btn:disabled { opacity: 0.5; cursor: not-allowed; }

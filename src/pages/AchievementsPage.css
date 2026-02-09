@@ -1,0 +1,117 @@
+.game-page--achievements {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+}
+
+.achievements__title {
+  font-size: clamp(28px, 6vw, 40px);
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 72px;
+}
+
+.achievements__counter {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  margin: 4px 0 24px;
+}
+
+.achievements__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 16px 48px;
+}
+
+.achievements__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.achievements__card:active {
+  transform: scale(0.98);
+}
+
+.achievements__card--unlocked {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  animation: cardUnlock 0.5s ease;
+}
+
+.achievements__card--locked {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.6;
+}
+
+@keyframes cardUnlock {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.achievements__card-emoji {
+  font-size: 36px;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievements__card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.achievements__card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.achievements__card--locked .achievements__card-title {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.achievements__card-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.achievements__card--locked .achievements__card-desc {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.achievements__card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  animation: goldenGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes goldenGlow {
+  from {
+    box-shadow: inset 0 0 12px rgba(255, 215, 0, 0.15), 0 0 8px rgba(255, 215, 0, 0.1);
+  }
+  to {
+    box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.3), 0 0 16px rgba(255, 215, 0, 0.2);
+  }
+}

@@ -1,0 +1,132 @@
+.challenge-btn {
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 230, 109, 0.5);
+  background: rgba(255, 230, 109, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  animation: challengePulse 2s ease infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.challenge-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 230, 109, 0.35);
+}
+
+@keyframes challengePulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(255, 230, 109, 0.3); }
+  50% { box-shadow: 0 4px 24px rgba(255, 230, 109, 0.5); }
+}
+
+.challenge {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 20px;
+  border: 1px solid rgba(255, 230, 109, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.challenge__header {
+  margin-bottom: 16px;
+}
+
+.challenge__title {
+  font-size: 22px;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.challenge__desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.challenge__games {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.challenge__game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  color: white;
+  min-width: 100px;
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+}
+
+.challenge__game:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.challenge__game--done {
+  border-color: #51CF66;
+  background: rgba(81, 207, 102, 0.15);
+}
+
+.challenge__game-emoji {
+  font-size: 36px;
+}
+
+.challenge__game-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.challenge__game-check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 18px;
+}
+
+.challenge__progress {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.challenge__close {
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.challenge__close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}

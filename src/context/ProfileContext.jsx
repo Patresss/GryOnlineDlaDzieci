@@ -48,6 +48,7 @@ const DEFAULT_PROFILE = {
   theme: "rainbow",
   ageGroup: null,
   soundEnabled: true,
+  darkMode: false,
   onboardingDone: false,
   helpSeen: {},
 };
@@ -74,6 +75,7 @@ export function ProfileProvider({ children }) {
   const setAgeGroup = (ageGroup) => setProfile((p) => ({ ...p, ageGroup }));
   const setTheme = (theme) => setProfile((p) => ({ ...p, theme }));
   const setSoundEnabled = (soundEnabled) => setProfile((p) => ({ ...p, soundEnabled }));
+  const setDarkMode = useCallback((darkMode) => setProfile((p) => ({ ...p, darkMode })), []);
   const setOnboardingDone = () => setProfile((p) => ({ ...p, onboardingDone: true }));
   const markHelpSeen = (gameId) => setProfile((p) => ({ ...p, helpSeen: { ...p.helpSeen, [gameId]: true } }));
 
@@ -109,6 +111,11 @@ export function ProfileProvider({ children }) {
     localStorage.removeItem("kidProfile");
   };
 
+  /* D4: Apply dark mode class to document */
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", profile.darkMode);
+  }, [profile.darkMode]);
+
   const level = getLevel(profile.stars);
   const [prevLevelId, setPrevLevelId] = useState(level.id);
 
@@ -136,6 +143,7 @@ export function ProfileProvider({ children }) {
         setAgeGroup,
         setTheme,
         setSoundEnabled,
+        setDarkMode,
         setOnboardingDone,
         markHelpSeen,
         addStar,

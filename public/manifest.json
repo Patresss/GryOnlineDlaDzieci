@@ -1,0 +1,22 @@
+{
+  "name": "Gry dla Dzieci",
+  "short_name": "Gry",
+  "description": "Edukacyjne gry dla dzieci - literki, cyferki, kolory i więcej!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#A29BFE",
+  "theme_color": "#74B9FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

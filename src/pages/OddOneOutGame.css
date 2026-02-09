@@ -1,0 +1,68 @@
+.game-page--oddoneout {
+  background: linear-gradient(135deg, #dfe6e9, #b2bec3, #74b9ff);
+}
+
+.oddoneout__title {
+  font-size: 28px;
+  color: var(--color-text);
+  margin: 8px 0 4px;
+  text-align: center;
+}
+
+.oddoneout__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 320px;
+  width: 100%;
+  padding: 0 16px;
+  margin-top: 16px;
+}
+
+.oddoneout__item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oddoneout__item:hover {
+  transform: scale(1.08);
+}
+
+.oddoneout__item--correct {
+  border-color: var(--color-success);
+  box-shadow: 0 0 20px rgba(46, 213, 115, 0.5);
+  animation: oddoneout-pop 0.5s ease;
+}
+
+.oddoneout__item--shake {
+  animation: oddoneout-shake 0.5s ease;
+}
+
+.oddoneout__emoji {
+  font-size: 56px;
+  line-height: 1;
+}
+
+@keyframes oddoneout-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes oddoneout-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}

@@ -6,6 +6,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 const MainMenu = lazy(() => import("./pages/MainMenu"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 const RewardsPage = lazy(() => import("./pages/RewardsPage"));
+const AchievementsPage = lazy(() => import("./pages/AchievementsPage"));
 
 // Language games
 const LetterGame = lazy(() => import("./pages/LetterGame"));
@@ -56,6 +57,14 @@ const RhythmGame = lazy(() => import("./pages/RhythmGame"));
 // New category games
 const EmotionGame = lazy(() => import("./pages/EmotionGame"));
 const CookingGame = lazy(() => import("./pages/CookingGame"));
+
+// Logic / new games (C1-C6)
+const OddOneOutGame = lazy(() => import("./pages/OddOneOutGame"));
+const MirrorGame = lazy(() => import("./pages/MirrorGame"));
+const TrainGame = lazy(() => import("./pages/TrainGame"));
+const TreasureGame = lazy(() => import("./pages/TreasureGame"));
+const ShopGame = lazy(() => import("./pages/ShopGame"));
+const BuilderGame = lazy(() => import("./pages/BuilderGame"));
 
 export default function App() {
   return (
@@ -117,9 +126,18 @@ export default function App() {
             {/* Codzienne umiejętności */}
             <Route path="/gra/gotowanie" element={<CookingGame />} />
 
+            {/* Logika */}
+            <Route path="/gra/intruz" element={<OddOneOutGame />} />
+            <Route path="/gra/lustro" element={<MirrorGame />} />
+            <Route path="/gra/pociag" element={<TrainGame />} />
+            <Route path="/gra/skarb" element={<TreasureGame />} />
+            <Route path="/gra/sklep" element={<ShopGame />} />
+            <Route path="/gra/buduj" element={<BuilderGame />} />
+
             {/* Profil i nagrody */}
             <Route path="/profil" element={<ProfilePage />} />
             <Route path="/nagrody" element={<RewardsPage />} />
+            <Route path="/osiagniecia" element={<AchievementsPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

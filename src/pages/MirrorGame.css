@@ -1,0 +1,135 @@
+.game-page--mirror {
+  background: linear-gradient(135deg, #a29bfe, #74b9ff, #dfe6e9);
+}
+
+.mirror__title {
+  font-size: 28px;
+  color: var(--color-text);
+  margin: 8px 0 4px;
+  text-align: center;
+}
+
+.mirror__boards {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 0 12px;
+  width: 100%;
+  max-width: 500px;
+  justify-content: center;
+}
+
+.mirror__board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.mirror__label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.mirror__grid {
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  aspect-ratio: 1;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.mirror__grid--correct {
+  border-color: var(--color-success);
+  box-shadow: 0 0 20px rgba(46, 213, 115, 0.5);
+}
+
+.mirror__grid--wrong {
+  border-color: var(--color-error);
+  animation: mirror-shake 0.5s ease;
+}
+
+.mirror__cell {
+  border-radius: 8px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+}
+
+.mirror__cell--clickable {
+  cursor: pointer;
+}
+
+.mirror__cell--clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mirror__cell-hint {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.mirror__divider {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.mirror__check-btn {
+  padding: 14px 40px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+  transition: transform 0.2s;
+  margin-top: 12px;
+}
+
+.mirror__check-btn:hover {
+  transform: scale(1.05);
+}
+
+.mirror__check-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes mirror-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+@media (max-width: 400px) {
+  .mirror__boards {
+    gap: 6px;
+    padding: 0 6px;
+  }
+  .mirror__grid {
+    gap: 3px;
+    padding: 6px;
+  }
+  .mirror__divider {
+    font-size: 24px;
+  }
+}

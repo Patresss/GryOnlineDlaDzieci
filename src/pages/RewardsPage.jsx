@@ -36,6 +36,12 @@ const ALL_STICKERS = [
   { emoji: "🔄", name: "Przeciwieństwa" },
   { emoji: "😊", name: "Emocje" },
   { emoji: "👨‍🍳", name: "Gotowanie" },
+  { emoji: "🔎", name: "Intruz" },
+  { emoji: "🪞", name: "Lustro" },
+  { emoji: "🚂", name: "Pociąg" },
+  { emoji: "🗺️", name: "Skarb" },
+  { emoji: "🛒", name: "Sklep" },
+  { emoji: "🏗️", name: "Budowlaniec" },
 ];
 
 export default function RewardsPage() {

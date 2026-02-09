@@ -1,14 +1,5 @@
 /* Shared styles for LetterGame and NumberGame */
-
-.game-page {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 24px 48px;
-  position: relative;
-}
+/* Base .game-page styles are in index.css (globally loaded) */
 
 .game-page--letters {
   background: linear-gradient(135deg, #FFF8E7 0%, #FFE4E4 100%);
@@ -18,12 +9,7 @@
   background: linear-gradient(135deg, #E4F0FF 0%, #FFF8E7 100%);
 }
 
-/* Progress area */
-.game-page__progress {
-  width: 100%;
-  max-width: 500px;
-  margin-top: 64px;
-}
+/* .game-page__progress styles are in index.css (globally loaded) */
 
 /* Main content area with cards */
 .game-page__content {
@@ -128,19 +114,7 @@
   line-height: 1;
 }
 
-/* Hint text */
-.game-page__hint {
-  font-size: clamp(18px, 4vw, 24px);
-  color: var(--color-text);
-  opacity: 0.6;
-  text-align: center;
-  margin: 0;
-}
-
-.game-page__hint strong {
-  opacity: 1;
-  color: var(--color-primary);
-}
+/* .game-page__hint styles are in index.css (globally loaded) */
 
 /* Emoji grid for number game */
 .emoji-grid {

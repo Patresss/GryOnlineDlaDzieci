@@ -1,8 +1,53 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import { useProfile } from "../context/ProfileContext";
 import "./ProfilePage.css";
+
+const CATEGORY_GAMES = {
+  "Literki": ["letterGame", "firstLetterGame", "wordGame", "rhymeGame", "syllableGame", "oppositeGame"],
+  "Matma": ["numberGame", "countGame", "biggerGame", "additionGame", "subtractionGame", "sortSizeGame", "shapeGame", "clockGame"],
+  "Pamięć": ["memoryGame", "whatDisappearedGame", "simonGame", "findDifferencesGame", "shadowGame", "sequenceGame"],
+  "Kolory": ["colorGame", "colorByNumberGame", "colorMixGame"],
+  "Przyroda": ["animalSoundGame", "animalHomeGame", "seasonsGame"],
+  "Zręczność": ["catchGame", "connectDotsGame", "mazeGame", "puzzleGame"],
+  "Muzyka": ["pianoGame", "rhythmGame"],
+  "Emocje": ["emotionGame"],
+  "Umiejętności": ["cookingGame"],
+  "Logika": ["oddOneOutGame", "mirrorGame", "trainGame", "treasureGame", "shopGame", "builderGame"],
+};
+
+const CAT_COLORS = ["#FF6B6B", "#74B9FF", "#A29BFE", "#e84393", "#00b894", "#fdcb6e", "#e67e22", "#fd79a8", "#636e72", "#00cec9"];
+
+function CategoryStats({ gamesCompleted }) {
+  const stats = useMemo(() => {
+    const entries = Object.entries(CATEGORY_GAMES);
+    return entries.map(([name, games], i) => {
+      const completed = games.filter((g) => gamesCompleted[g]).length;
+      const pct = Math.round((completed / games.length) * 100);
+      return { name, completed, total: games.length, pct, color: CAT_COLORS[i] };
+    });
+  }, [gamesCompleted]);
+
+  return (
+    <div className="profile-cat-stats">
+      {stats.map((s) => (
+        <div key={s.name} className="profile-cat-stat">
+          <div className="profile-cat-stat__label">
+            <span>{s.name}</span>
+            <span className="profile-cat-stat__count">{s.completed}/{s.total}</span>
+          </div>
+          <div className="profile-cat-stat__bar">
+            <div
+              className="profile-cat-stat__fill"
+              style={{ width: `${s.pct}%`, background: s.color }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const GAME_NAMES = {
   letterGame: { name: "Literki ABC", emoji: "🔤" },
@@ -39,6 +84,12 @@ const GAME_NAMES = {
   rhythmGame: { name: "Rytm", emoji: "🥁" },
   emotionGame: { name: "Emocje", emoji: "😊" },
   cookingGame: { name: "Gotowanie", emoji: "👨‍🍳" },
+  oddOneOutGame: { name: "Znajdź intruza", emoji: "🔎" },
+  mirrorGame: { name: "Lustro", emoji: "🪞" },
+  trainGame: { name: "Pociąg", emoji: "🚂" },
+  treasureGame: { name: "Mapa skarbów", emoji: "🗺️" },
+  shopGame: { name: "Sklep", emoji: "🛒" },
+  builderGame: { name: "Budowlaniec", emoji: "🏗️" },
 };
 
 export default function ProfilePage() {
@@ -140,6 +191,10 @@ export default function ProfilePage() {
               );
             })}
           </div>
+
+          {/* B3: Category stats */}
+          <h4 className="profile-section-title">Statystyki kategorii:</h4>
+          <CategoryStats gamesCompleted={profile.gamesCompleted} />
 
           <h4 className="profile-section-title">Ukończone gry:</h4>
           <div className="profile-completed">
