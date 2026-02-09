@@ -7,6 +7,34 @@ let toneInProgress = false;
 let stopCurrentTone = null;
 let speechQueue = [];
 let speechInProgress = false;
+let voicesListenerAttached = false;
+let voiceCacheByLang = {};
+
+const VOICE_QUALITY_HINTS = [
+  "natural",
+  "neural",
+  "enhanced",
+  "premium",
+  "wavenet",
+  "studio",
+  "microsoft",
+  "google",
+];
+
+const VOICE_LOW_QUALITY_HINTS = [
+  "espeak",
+  "compact",
+  "lite",
+  "basic",
+];
+
+const POLISH_VOICE_HINTS = [
+  "polish",
+  "polski",
+  "zosia",
+  "marek",
+  "pl-pl",
+];
 
 function readSoundEnabledFromStorage() {
   if (typeof window === "undefined") return true;
@@ -52,6 +80,121 @@ export function setSoundEnabledRuntime(enabled) {
   }
 }
 
+function normalizeSpeechText(text) {
+  return String(text)
+    .replace(/\s+/g, " ")
+    .replace(/\+/g, " plus ")
+    .replace(/\s=\s/g, " równa się ")
+    .replace(/\s-\s/g, " minus ")
+    .replace(/\//g, " na ")
+    .trim();
+}
+
+function splitSpeechIntoChunks(text, maxLength = 140) {
+  if (text.length <= maxLength) return [text];
+
+  const sentenceParts = text.match(/[^.!?]+[.!?]?/g) || [text];
+  const chunks = [];
+  let current = "";
+
+  sentenceParts.forEach((part) => {
+    const candidate = current ? `${current} ${part}`.trim() : part.trim();
+    if (candidate.length <= maxLength) {
+      current = candidate;
+      return;
+    }
+    if (current) chunks.push(current);
+    if (part.length <= maxLength) {
+      current = part.trim();
+      return;
+    }
+
+    const words = part.trim().split(" ");
+    current = "";
+    words.forEach((word) => {
+      const next = current ? `${current} ${word}` : word;
+      if (next.length > maxLength && current) {
+        chunks.push(current);
+        current = word;
+      } else {
+        current = next;
+      }
+    });
+  });
+
+  if (current) chunks.push(current);
+  return chunks.length > 0 ? chunks : [text];
+}
+
+function ensureVoicesListener() {
+  if (voicesListenerAttached) return;
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+
+  voicesListenerAttached = true;
+  window.speechSynthesis.addEventListener("voiceschanged", () => {
+    voiceCacheByLang = {};
+    processSpeechQueue();
+  });
+}
+
+function scoreVoice(voice, lang, langBase) {
+  const voiceLang = (voice.lang || "").toLowerCase();
+  const voiceName = (voice.name || "").toLowerCase();
+  let score = 0;
+
+  if (voiceLang === lang.toLowerCase()) score += 120;
+  else if (voiceLang.startsWith(langBase)) score += 85;
+  else if (voiceLang.startsWith("pl")) score += 40;
+  if (voice.default) score += 10;
+
+  VOICE_QUALITY_HINTS.forEach((hint) => {
+    if (voiceName.includes(hint)) score += 8;
+  });
+  VOICE_LOW_QUALITY_HINTS.forEach((hint) => {
+    if (voiceName.includes(hint)) score -= 16;
+  });
+
+  if (langBase === "pl") {
+    POLISH_VOICE_HINTS.forEach((hint) => {
+      if (voiceName.includes(hint)) score += 10;
+    });
+  }
+
+  return score;
+}
+
+function getBestVoice(lang) {
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) return null;
+  ensureVoicesListener();
+
+  if (Object.prototype.hasOwnProperty.call(voiceCacheByLang, lang)) {
+    return voiceCacheByLang[lang];
+  }
+
+  const voices = window.speechSynthesis.getVoices() || [];
+  if (voices.length === 0) {
+    voiceCacheByLang[lang] = null;
+    return null;
+  }
+
+  const langBase = (lang || "pl-PL").slice(0, 2).toLowerCase();
+  const sameLangVoices = voices.filter((voice) => (voice.lang || "").toLowerCase().startsWith(langBase));
+  const candidates = sameLangVoices.length > 0 ? sameLangVoices : voices;
+
+  let bestVoice = null;
+  let bestScore = -Infinity;
+  candidates.forEach((voice) => {
+    const score = scoreVoice(voice, lang, langBase);
+    if (score > bestScore) {
+      bestScore = score;
+      bestVoice = voice;
+    }
+  });
+
+  voiceCacheByLang[lang] = bestVoice;
+  return bestVoice;
+}
+
 function processSpeechQueue() {
   if (speechInProgress || speechQueue.length === 0) return;
   if (!isSoundEnabled()) {
@@ -70,6 +213,8 @@ function processSpeechQueue() {
   utterance.lang = next.lang;
   utterance.rate = next.rate;
   utterance.pitch = next.pitch;
+  utterance.volume = 1;
+  utterance.voice = getBestVoice(next.lang);
 
   speechInProgress = true;
   const finish = () => {
@@ -82,9 +227,25 @@ function processSpeechQueue() {
   window.speechSynthesis.speak(utterance);
 }
 
-export function speak(text, lang = "pl-PL", rate = 0.85) {
+export function speak(text, lang = "pl-PL", rate = 0.95) {
   if (!text || !isSoundEnabled()) return;
-  speechQueue.push({ text, lang, rate, pitch: 1.1 });
+
+  const normalized = normalizeSpeechText(text);
+  if (!normalized) return;
+
+  const clampedRate = Math.min(Math.max(rate, 0.78), 1.1);
+  const pitch = (lang || "").toLowerCase().startsWith("pl") ? 0.97 : 1;
+  const chunks = splitSpeechIntoChunks(normalized);
+
+  chunks.forEach((chunk) => {
+    speechQueue.push({
+      text: chunk,
+      lang,
+      rate: clampedRate,
+      pitch,
+    });
+  });
+
   processSpeechQueue();
 }
 
