@@ -26,7 +26,7 @@
   left: var(--x);
   bottom: -100px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   animation: bubbleFloat var(--duration) ease-in-out var(--delay) infinite;
 }
 
@@ -108,12 +108,22 @@
 }
 
 /* Header */
+.main-menu__hero {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+}
+
 .main-menu__header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  position: relative;
-  z-index: 1;
+  justify-content: center;
+  gap: 10px;
 }
 
 .main-menu__icon {
@@ -122,12 +132,12 @@
 }
 
 .main-menu__icon:last-child {
-  animation-delay: 0.5s;
+  animation-delay: 0.8s;
 }
 
 @keyframes iconBounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-3px); }
 }
 
 .main-menu__title {
@@ -136,45 +146,45 @@
   color: white;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   margin: 0;
+  text-align: center;
 }
 
 /* Greeting */
 .main-menu__greeting {
-  font-size: clamp(18px, 4vw, 24px);
+  font-size: clamp(17px, 3vw, 22px);
   color: white;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   font-weight: 600;
   margin: 0;
-  position: relative;
-  z-index: 1;
+  text-align: center;
 }
 
 /* Profile bar */
 .main-menu__profile-bar {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  position: relative;
-  z-index: 1;
 }
 
 .main-menu__profile-link,
 .main-menu__rewards-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 8px 14px;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
+  border-radius: 18px;
   color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
   transition: background 0.2s, transform 0.2s;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  min-height: 40px;
 }
 
 .main-menu__profile-link:hover,
@@ -187,54 +197,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  border: 3px solid;
-  font-size: 18px;
+  border: 2px solid;
+  font-size: 16px;
 }
 
 .main-menu__level-badge {
-  padding: 2px 10px;
-  border-radius: 20px;
-  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
   color: white;
 }
 
 .main-menu__stars {
   background: rgba(255, 255, 255, 0.3);
-  padding: 2px 10px;
-  border-radius: 20px;
-  font-size: 14px;
-  animation: starPulse 2s ease infinite;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  animation: starPulse 2.6s ease infinite;
 }
 
 @keyframes starPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  50% { transform: scale(1.04); }
 }
 
 /* Recommended section */
 .main-menu__recommended {
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   position: relative;
   z-index: 1;
 }
 
 .main-menu__recommended-title {
-  font-size: clamp(18px, 4vw, 22px);
+  font-size: clamp(16px, 3.2vw, 20px);
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  margin: 0 0 12px 8px;
+  margin: 0 0 8px 6px;
   font-weight: 600;
 }
 
 .main-menu__recommended-scroll {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   overflow-x: auto;
-  padding: 4px 4px 12px;
+  padding: 2px 2px 8px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -244,18 +254,18 @@
 
 .main-menu__rec-tile {
   flex-shrink: 0;
-  width: 140px;
-  min-height: 140px;
+  width: 112px;
+  min-height: 108px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 16px 12px;
-  border-radius: 20px;
+  gap: 6px;
+  padding: 10px 8px;
+  border-radius: 16px;
   text-decoration: none;
   color: white;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
   transition: transform 0.2s;
   scroll-snap-align: start;
   position: relative;
@@ -288,23 +298,23 @@
 }
 
 .main-menu__rec-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.6px;
   opacity: 0.9;
   position: relative;
   z-index: 1;
 }
 
 .main-menu__rec-emoji {
-  font-size: 40px;
+  font-size: 30px;
   position: relative;
   z-index: 1;
 }
 
 .main-menu__rec-name {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   text-align: center;
   position: relative;
@@ -314,7 +324,7 @@
 /* Category sections with glassmorphism */
 .main-menu__section {
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   position: relative;
   z-index: 1;
   background: rgba(255, 255, 255, 0.12);
@@ -348,6 +358,11 @@
 
 .main-menu__section-icon {
   font-size: 1.4em;
+}
+
+.main-menu__games-anchor {
+  width: 100%;
+  height: 1px;
 }
 
 /* Grid of game tiles */
@@ -434,27 +449,6 @@
   color: var(--color-text);
 }
 
-/* A4: Difficulty dots */
-.main-menu__tile-dots {
-  display: flex;
-  gap: 3px;
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  z-index: 2;
-}
-
-.main-menu__tile-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.main-menu__tile-dot--filled {
-  background: rgba(255, 255, 255, 0.9);
-}
-
 .main-menu__tile::after {
   content: "";
   position: absolute;
@@ -499,10 +493,29 @@
   text-align: center;
 }
 
+.main-menu__extras {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+}
+
+.main-menu__extras-content {
+  display: grid;
+  gap: 12px;
+}
+
+.main-menu__extras-content .progress-journey {
+  width: 100%;
+  max-width: none;
+}
+
 /* A1: Wider layout on desktop */
 @media (min-width: 768px) {
+  .main-menu__hero,
   .main-menu__section,
-  .main-menu__recommended {
+  .main-menu__recommended,
+  .main-menu__extras {
     max-width: 1000px;
   }
 
@@ -516,22 +529,24 @@
   }
 
   .main-menu__rec-tile {
-    width: 160px;
-    min-height: 160px;
+    width: 128px;
+    min-height: 120px;
   }
 
   .main-menu__rec-emoji {
-    font-size: 48px;
+    font-size: 34px;
   }
 }
 
 @media (min-width: 1200px) {
   .main-menu {
-    padding: 32px 40px 64px;
+    padding: 24px 40px 64px;
   }
 
+  .main-menu__hero,
   .main-menu__section,
-  .main-menu__recommended {
+  .main-menu__recommended,
+  .main-menu__extras {
     max-width: 1100px;
   }
 
@@ -545,5 +560,15 @@
 
   .main-menu__tile-emoji {
     font-size: 52px;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-menu__profile-link {
+    width: 100%;
+  }
+
+  .main-menu__rewards-link {
+    flex: 1 1 170px;
   }
 }

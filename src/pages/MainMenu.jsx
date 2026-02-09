@@ -10,7 +10,6 @@ import ProgressJourney from "../components/ProgressJourney";
 import Mascot from "../components/Mascot";
 import SeasonalDecorations from "../components/SeasonalDecorations";
 import DarkModeToggle from "../components/DarkModeToggle";
-import ChallengeMode from "../components/ChallengeMode";
 import "./MainMenu.css";
 
 const ALL_GAMES = [
@@ -112,20 +111,34 @@ const CATEGORIES = [
 const GAME_MAP = {};
 ALL_GAMES.forEach((g) => { GAME_MAP[g.gameId] = g; });
 
+const SOLO_GAME_IDS = CATEGORIES
+  .filter((cat) => cat.games.length === 1)
+  .flatMap((cat) => cat.games);
 
-function DifficultyDots({ level }) {
+const MENU_CATEGORIES = [
+  ...CATEGORIES.filter((cat) => cat.games.length > 1),
+  ...(SOLO_GAME_IDS.length > 0
+    ? [{ title: "Inne", icon: "✨", games: SOLO_GAME_IDS }]
+    : []),
+];
+
+function GameTile({ game, count, delay, className = "" }) {
   return (
-    <span className="main-menu__tile-dots">
-      {[1, 2, 3].map((d) => (
-        <span key={d} className={`main-menu__tile-dot ${d <= level ? "main-menu__tile-dot--filled" : ""}`} />
-      ))}
-    </span>
+    <Link
+      to={game.to}
+      className={`main-menu__tile ${count > 0 ? "main-menu__tile--completed" : "main-menu__tile--new"} ${className}`.trim()}
+      style={{ background: game.bg, "--delay": `${delay}ms` }}
+      onClick={() => playClick()}
+    >
+      {count > 0 && (
+        <span className="main-menu__tile-badge">
+          ⭐ <span className="main-menu__tile-count">x{count}</span>
+        </span>
+      )}
+      <span className="main-menu__tile-emoji">{game.emoji}</span>
+      <span className="main-menu__tile-label">{game.label}</span>
+    </Link>
   );
-}
-
-function getGameOfTheDay() {
-  const day = Math.floor(Date.now() / 86400000);
-  return ALL_GAMES[day % ALL_GAMES.length];
 }
 
 function CategorySection({ cat, profile }) {
@@ -143,22 +156,12 @@ function CategorySection({ cat, profile }) {
           if (!game) return null;
           const count = profile.gamesCompleted[gameId] || 0;
           return (
-            <Link
+            <GameTile
               key={game.to}
-              to={game.to}
-              className={`main-menu__tile ${count > 0 ? "main-menu__tile--completed" : "main-menu__tile--new"}`}
-              style={{ background: game.bg, "--delay": `${i * 60}ms` }}
-              onClick={() => playClick()}
-            >
-              {count > 0 && (
-                <span className="main-menu__tile-badge">
-                  ⭐ <span className="main-menu__tile-count">x{count}</span>
-                </span>
-              )}
-              <span className="main-menu__tile-emoji">{game.emoji}</span>
-              <span className="main-menu__tile-label">{game.label}</span>
-              <DifficultyDots level={game.difficulty} />
-            </Link>
+              game={game}
+              count={count}
+              delay={i * 60}
+            />
           );
         })}
       </div>
@@ -170,13 +173,12 @@ export default function MainMenu() {
   const { profile, level, THEMES } = useProfile();
   const hasGreeted = useRef(false);
   const [stickyVisible, setStickyVisible] = useState(false);
-  const headerRef = useRef(null);
 
   const currentTheme = THEMES.find((t) => t.id === profile.theme) || THEMES[0];
 
   /* eslint-disable react-hooks/purity -- one-time random init for bubble animation */
   const bubbleStyles = useMemo(
-    () => Array.from({ length: 12 }, () => ({
+    () => Array.from({ length: 8 }, () => ({
       size: `${40 + Math.random() * 60}px`,
       x: `${Math.random() * 100}%`,
       delay: `${Math.random() * 8}s`,
@@ -188,7 +190,7 @@ export default function MainMenu() {
 
   /* A5: Sticky header visibility on scroll */
   const handleScroll = useCallback(() => {
-    setStickyVisible(window.scrollY > 200);
+    setStickyVisible(window.scrollY > 140);
   }, []);
 
   useEffect(() => {
@@ -202,21 +204,6 @@ export default function MainMenu() {
       setTimeout(() => speak(`Cześć, ${profile.name}!`), 500);
     }
   }, [profile.name, profile.soundEnabled]);
-
-  const gameOfDay = getGameOfTheDay();
-  const recentGames = (profile.recentlyPlayed || [])
-    .map((id) => GAME_MAP[id])
-    .filter(Boolean)
-    .slice(0, 3);
-  const playedIds = new Set(Object.keys(profile.gamesCompleted));
-  const unplayed = ALL_GAMES.filter((g) => !playedIds.has(g.gameId));
-  /* eslint-disable react-hooks/purity -- one-time random pick for "try new" tile */
-  const tryNewIndex = useMemo(
-    () => Math.floor(Math.random() * Math.max(unplayed.length, 1)),
-    [unplayed.length]
-  );
-  const tryNew = unplayed.length > 0 ? unplayed[tryNewIndex % unplayed.length] : null;
-  /* eslint-enable react-hooks/purity */
 
   if (!profile.onboardingDone) {
     return <Onboarding />;
@@ -251,89 +238,45 @@ export default function MainMenu() {
       </div>
 
 
-      <header ref={headerRef} className="main-menu__header">
-        <span className="main-menu__icon" role="img" aria-label="gra">🎮</span>
-        <h1 className="main-menu__title">Gry dla Dzieci</h1>
-        <span className="main-menu__icon" role="img" aria-label="gwiazdka">⭐</span>
-      </header>
+      <section className="main-menu__hero">
+        <header className="main-menu__header">
+          <span className="main-menu__icon" role="img" aria-label="gra">🎮</span>
+          <h1 className="main-menu__title">Gry dla Dzieci</h1>
+          <span className="main-menu__icon" role="img" aria-label="gwiazdka">⭐</span>
+        </header>
 
-      {profile.name && (
-        <p className="main-menu__greeting">Cześć, {profile.name}!</p>
-      )}
+        {profile.name && (
+          <p className="main-menu__greeting">Cześć, {profile.name}!</p>
+        )}
 
-      <div className="main-menu__profile-bar">
-        <Link to="/profil" className="main-menu__profile-link">
-          <span className="main-menu__avatar-frame" style={{ borderColor: level.color }}>
-            {profile.avatar || "👤"}
-          </span>
-          <span>{profile.name || "Mój profil"}</span>
-          <span className="main-menu__level-badge" style={{ background: level.color }}>
-            {level.emoji} {level.name}
-          </span>
-          <span className="main-menu__stars">⭐ {profile.stars}</span>
-        </Link>
-        <Link to="/nagrody" className="main-menu__rewards-link">
-          🏆 Naklejki ({profile.stickers.length})
-        </Link>
-        <Link to="/osiagniecia" className="main-menu__rewards-link">
-          🏅 Osiągnięcia
-        </Link>
-      </div>
-
-      {/* A3: Progress Journey */}
-      <ProgressJourney />
-
-      {/* B2: Challenge Mode */}
-      <ChallengeMode />
-
-      {/* A2: Recommended section */}
-      <section className="main-menu__recommended">
-        <h2 className="main-menu__recommended-title">Polecane</h2>
-        <div className="main-menu__recommended-scroll">
-          {/* Game of the day */}
-          <Link
-            to={gameOfDay.to}
-            className="main-menu__rec-tile main-menu__rec-tile--daily"
-            style={{ background: gameOfDay.bg }}
-            onClick={() => playClick()}
-          >
-            <span className="main-menu__rec-label">Gra dnia</span>
-            <span className="main-menu__rec-emoji">{gameOfDay.emoji}</span>
-            <span className="main-menu__rec-name">{gameOfDay.label}</span>
+        <div className="main-menu__profile-bar">
+          <Link to="/profil" className="main-menu__profile-link">
+            <span className="main-menu__avatar-frame" style={{ borderColor: level.color }}>
+              {profile.avatar || "👤"}
+            </span>
+            <span>{profile.name || "Mój profil"}</span>
+            <span className="main-menu__level-badge" style={{ background: level.color }}>
+              {level.emoji} {level.name}
+            </span>
+            <span className="main-menu__stars">⭐ {profile.stars}</span>
           </Link>
+          <Link to="/nagrody" className="main-menu__rewards-link">
+            🏆 Naklejki ({profile.stickers.length})
+          </Link>
+          <Link to="/osiagniecia" className="main-menu__rewards-link">
+            🏅 Osiągnięcia
+          </Link>
+        </div>
 
-          {/* Recently played */}
-          {recentGames.map((g) => (
-            <Link
-              key={g.gameId}
-              to={g.to}
-              className="main-menu__rec-tile"
-              style={{ background: g.bg }}
-              onClick={() => playClick()}
-            >
-              <span className="main-menu__rec-label">Ostatnio</span>
-              <span className="main-menu__rec-emoji">{g.emoji}</span>
-              <span className="main-menu__rec-name">{g.label}</span>
-            </Link>
-          ))}
+      </section>
 
-          {/* Try something new */}
-          {tryNew && (
-            <Link
-              to={tryNew.to}
-              className="main-menu__rec-tile main-menu__rec-tile--new"
-              style={{ background: tryNew.bg }}
-              onClick={() => playClick()}
-            >
-              <span className="main-menu__rec-label">Spróbuj!</span>
-              <span className="main-menu__rec-emoji">{tryNew.emoji}</span>
-              <span className="main-menu__rec-name">{tryNew.label}</span>
-            </Link>
-          )}
+      <section className="main-menu__extras">
+        <div className="main-menu__extras-content">
+          <ProgressJourney />
         </div>
       </section>
 
-      {CATEGORIES.map((cat) => (
+      {MENU_CATEGORIES.map((cat) => (
         <CategorySection key={cat.title} cat={cat} profile={profile} />
       ))}
 
