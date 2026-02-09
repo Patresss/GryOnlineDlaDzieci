@@ -112,19 +112,6 @@ const CATEGORIES = [
 const GAME_MAP = {};
 ALL_GAMES.forEach((g) => { GAME_MAP[g.gameId] = g; });
 
-/* A2: Floating side decorations */
-const SIDE_DECORATIONS = [
-  { emoji: "⭐", side: "left", top: "10%", x: "3%", size: 28, dur: 10, delay: 0 },
-  { emoji: "🌈", side: "right", top: "15%", x: "4%", size: 34, dur: 14, delay: 2 },
-  { emoji: "💖", side: "left", top: "30%", x: "6%", size: 24, dur: 11, delay: 4 },
-  { emoji: "☁️", side: "right", top: "35%", x: "2%", size: 36, dur: 16, delay: 1 },
-  { emoji: "🦄", side: "left", top: "50%", x: "4%", size: 30, dur: 13, delay: 3 },
-  { emoji: "🌟", side: "right", top: "55%", x: "5%", size: 26, dur: 12, delay: 5 },
-  { emoji: "🎈", side: "left", top: "70%", x: "5%", size: 32, dur: 15, delay: 2 },
-  { emoji: "🦋", side: "right", top: "75%", x: "3%", size: 28, dur: 11, delay: 6 },
-  { emoji: "🍀", side: "left", top: "90%", x: "2%", size: 22, dur: 14, delay: 1 },
-  { emoji: "💫", side: "right", top: "90%", x: "6%", size: 24, dur: 10, delay: 4 },
-];
 
 function DifficultyDots({ level }) {
   return (
@@ -263,22 +250,6 @@ export default function MainMenu() {
         ))}
       </div>
 
-      {/* A2: Floating side decorations */}
-      {SIDE_DECORATIONS.map((d, i) => (
-        <div
-          key={i}
-          className={`main-menu__deco main-menu__deco--${d.side}`}
-          style={{
-            top: d.top,
-            "--deco-x": d.x,
-            "--deco-size": `${d.size}px`,
-            "--deco-dur": `${d.dur}s`,
-            "--deco-delay": `${d.delay}s`,
-          }}
-        >
-          {d.emoji}
-        </div>
-      ))}
 
       <header ref={headerRef} className="main-menu__header">
         <span className="main-menu__icon" role="img" aria-label="gra">🎮</span>

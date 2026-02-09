@@ -1,6 +1,6 @@
 .mascot {
   position: fixed;
-  bottom: 24px;
+  bottom: 80px;
   right: 24px;
   z-index: 50;
   display: flex;
@@ -75,7 +75,7 @@
 
 @media (max-width: 400px) {
   .mascot {
-    bottom: 16px;
+    bottom: 72px;
     right: 16px;
   }
 
